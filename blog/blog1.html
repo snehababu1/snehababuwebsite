@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>I've lived on three continents. Germany still surprised me. — Sneha Babu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --coral: #E8506A; --coral-dark: #c73d56; --coral-pale: #fde8ec;
+      --white: #FAFAF7; --light-gray: #f4f4f6; --gray: #8a8a9a;
+      --dark-gray: #444455; --dark: #1a1a2e; --font: 'Poppins', sans-serif;
+      --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--white); color: var(--dark); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--light-gray); }
+    ::-webkit-scrollbar-thumb { background: var(--coral); border-radius: 3px; }
+
+    #navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 18px 0; transition: background var(--transition), box-shadow var(--transition), padding var(--transition); }
+    #navbar.scrolled { background: rgba(255,255,255,0.97); box-shadow: 0 2px 20px rgba(0,0,0,0.08); padding: 12px 0; backdrop-filter: blur(12px); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+    .nav-logo { font-size: 1.6rem; font-weight: 900; color: var(--coral); letter-spacing: -1px; }
+    .nav-links { display: flex; align-items: center; gap: 6px; }
+    .nav-links a { font-size: 0.88rem; font-weight: 500; color: var(--dark-gray); padding: 6px 12px; border-radius: 20px; transition: color var(--transition), background var(--transition); }
+    .nav-links a:hover, .nav-links a.active { color: var(--coral); background: var(--coral-pale); }
+    .lang-toggle { background: var(--coral); color: white; border: none; padding: 7px 16px; border-radius: 20px; font-family: var(--font); font-size: 0.82rem; font-weight: 700; cursor: pointer; transition: background var(--transition); letter-spacing: 0.5px; }
+    .lang-toggle:hover { background: var(--coral-dark); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 26px; height: 2.5px; background: var(--dark); border-radius: 2px; transition: var(--transition); }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+    .mobile-nav-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 1100; }
+    .mobile-nav-overlay.open { display: block; }
+    .mobile-nav { position: fixed; top: 0; right: -280px; width: 270px; height: 100%; background: var(--white); z-index: 1200; padding: 72px 28px 40px; display: flex; flex-direction: column; gap: 6px; box-shadow: -4px 0 24px rgba(0,0,0,0.12); transition: right var(--transition); }
+    .mobile-nav.open { right: 0; }
+    .mobile-nav a { font-size: 1rem; font-weight: 600; color: var(--dark-gray); padding: 10px 16px; border-radius: 10px; transition: background var(--transition), color var(--transition); }
+    .mobile-nav a:hover, .mobile-nav a.active { background: var(--coral-pale); color: var(--coral); }
+
+    .post-hero { background: var(--dark); padding: 140px 0 80px; position: relative; overflow: hidden; text-align: center; }
+    .doodle-layer { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+    .doodle { position: absolute; pointer-events: none; animation: doodle-float ease-in-out infinite; }
+    @keyframes doodle-float {
+      0%, 100% { transform: rotate(var(--rot,0deg)) translateY(0px); }
+      50% { transform: rotate(var(--rot,0deg)) translateY(-12px); }
+    }
+    .hero-inner { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.55); font-size: 0.83rem; margin-bottom: 32px; transition: color 0.2s; }
+    .back-link:hover { color: var(--coral); }
+    .post-meta { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; justify-content: center; margin-bottom: 20px; }
+    .post-cat { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--coral); background: rgba(232,80,106,0.18); padding: 4px 14px; border-radius: 20px; }
+    .post-date, .post-time { font-size: 0.8rem; color: rgba(255,255,255,0.45); }
+    .post-hero h1 { font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight: 800; color: white; line-height: 1.28; }
+
+    .post-body { max-width: 700px; margin: 0 auto; padding: 72px 24px 48px; }
+    .post-body p { font-size: 1rem; line-height: 1.85; color: #3a3a4a; margin-bottom: 26px; }
+    .post-body h3 { font-size: 1.12rem; font-weight: 700; color: var(--dark); margin: 44px 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--coral-pale); }
+
+    .read-next { max-width: 700px; margin: 0 auto; padding: 36px 24px 80px; border-top: 1px solid var(--coral-pale); }
+    .read-next-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.2px; color: var(--gray); margin-bottom: 6px; }
+    .read-next-link { font-size: 0.95rem; font-weight: 700; color: var(--coral); display: inline-flex; align-items: center; gap: 6px; }
+    .read-next-link:hover { text-decoration: underline; }
+
+    footer { background: var(--dark); color: rgba(255,255,255,0.5); text-align: center; padding: 28px 24px; font-size: 0.82rem; }
+    footer a { color: var(--coral); font-weight: 600; }
+
+    @media (max-width: 900px) { .nav-links { display: none; } .hamburger { display: flex; } }
+    @media (max-width: 600px) { .post-hero { padding: 120px 0 60px; } .post-body { padding: 48px 20px 40px; } }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="../index.html#hero" class="nav-logo">SB</a>
+    <div class="nav-links">
+      <a href="../index.html#about"          data-i18n="nav_about">About</a>
+      <a href="../index.html#skills"         data-i18n="nav_skills">Skills</a>
+      <a href="../index.html#experience"     data-i18n="nav_experience">Experience</a>
+      <a href="../index.html#projects"       data-i18n="nav_projects">Projects</a>
+      <a href="../index.html#certifications" data-i18n="nav_certs">Certifications</a>
+      <a href="../blog.html" class="active"  data-i18n="nav_blog">Blog</a>
+      <a href="../index.html#contact"        data-i18n="nav_contact">Contact</a>
+      <button class="lang-toggle" id="langToggle" onclick="toggleLang()">DE</button>
+    </div>
+    <div class="hamburger" id="hamburger" onclick="toggleMobileNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+<div class="mobile-nav-overlay" id="mobileNavOverlay" onclick="toggleMobileNav()"></div>
+<nav class="mobile-nav" id="mobileNav">
+  <a href="../index.html#about"          onclick="toggleMobileNav()" data-i18n="nav_about">About</a>
+  <a href="../index.html#skills"         onclick="toggleMobileNav()" data-i18n="nav_skills">Skills</a>
+  <a href="../index.html#experience"     onclick="toggleMobileNav()" data-i18n="nav_experience">Experience</a>
+  <a href="../index.html#projects"       onclick="toggleMobileNav()" data-i18n="nav_projects">Projects</a>
+  <a href="../index.html#certifications" onclick="toggleMobileNav()" data-i18n="nav_certs">Certifications</a>
+  <a href="../blog.html" class="active"  onclick="toggleMobileNav()" data-i18n="nav_blog">Blog</a>
+  <a href="../index.html#contact"        onclick="toggleMobileNav()" data-i18n="nav_contact">Contact</a>
+  <button class="lang-toggle" onclick="toggleLang(); toggleMobileNav();" style="width:fit-content;margin-top:12px;" id="langToggleMobile">DE</button>
+</nav>
+
+<header class="post-hero">
+  <div class="doodle-layer">
+    <!-- Airplane -->
+    <svg class="doodle" style="top:12%;left:5%;--rot:-8deg;animation-duration:7s;animation-delay:0s;" width="70" height="40" viewBox="0 0 70 40" fill="none" stroke="rgba(245,240,232,0.75)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 22 L52 10 L62 18 L36 22 L52 36 L46 36 L32 24 L14 28 L14 22 Z"/>
+    </svg>
+    <!-- Suitcase -->
+    <svg class="doodle" style="top:20%;right:7%;--rot:5deg;animation-duration:8s;animation-delay:1.2s;" width="50" height="56" viewBox="0 0 50 56" fill="none" stroke="rgba(245,240,232,0.75)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="16" width="42" height="34" rx="4"/>
+      <path d="M17 16 L17 10 Q17 6 25 6 Q33 6 33 10 L33 16"/>
+      <line x1="25" y1="16" x2="25" y2="50"/>
+      <line x1="4" y1="33" x2="46" y2="33"/>
+    </svg>
+    <!-- Coffee cup -->
+    <svg class="doodle" style="bottom:22%;left:8%;--rot:4deg;animation-duration:9s;animation-delay:0.5s;" width="48" height="54" viewBox="0 0 48 54" fill="none" stroke="rgba(245,240,232,0.75)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 18 L10 46 Q10 50 24 50 Q38 50 38 46 L40 18 Z"/>
+      <line x1="8" y1="18" x2="40" y2="18"/>
+      <path d="M40 24 Q50 24 50 32 Q50 40 40 40"/>
+      <path d="M18 8 Q18 4 22 4 Q22 8 26 8 Q26 4 30 4"/>
+    </svg>
+    <!-- Speech bubble: Bitte? -->
+    <svg class="doodle" style="top:55%;right:5%;--rot:-6deg;animation-duration:10s;animation-delay:2s;" width="80" height="60" viewBox="0 0 80 60" fill="none" stroke="rgba(245,240,232,0.75)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 4 Q4 0 8 0 L72 0 Q76 0 76 4 L76 38 Q76 42 72 42 L28 42 L16 56 L20 42 L8 42 Q4 42 4 38 Z"/>
+      <text x="40" y="26" text-anchor="middle" font-family="Poppins,sans-serif" font-size="13" font-weight="700" fill="rgba(245,240,232,0.75)" stroke="none">Bitte?</text>
+    </svg>
+    <!-- Question marks -->
+    <svg class="doodle" style="top:30%;left:18%;--rot:10deg;animation-duration:11s;animation-delay:1s;" width="40" height="50" viewBox="0 0 40 50" fill="none" stroke="rgba(245,240,232,0.6)" stroke-width="3.5" stroke-linecap="round">
+      <path d="M12 8 Q12 2 20 2 Q28 2 28 10 Q28 18 20 22 L20 30"/>
+      <circle cx="20" cy="38" r="2.5" fill="rgba(245,240,232,0.6)" stroke="none"/>
+    </svg>
+    <!-- Hamburg skyline (Rathaus + Michel) -->
+    <svg class="doodle" style="bottom:5%;right:10%;--rot:0deg;animation-duration:13s;animation-delay:0.8s;" width="140" height="60" viewBox="0 0 140 60" fill="none" stroke="rgba(245,240,232,0.5)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="35" width="40" height="22"/>
+      <path d="M2 35 L22 20 L42 35"/>
+      <rect x="18" y="8" width="8" height="12"/>
+      <rect x="50" y="30" width="30" height="27"/>
+      <path d="M50 30 L65 18 L80 30"/>
+      <rect x="62" y="4" width="6" height="14"/>
+      <rect x="90" y="38" width="20" height="20"/>
+      <rect x="98" y="28" width="4" height="10"/>
+      <rect x="118" y="32" width="20" height="26"/>
+      <path d="M118 32 L128 22 L138 32"/>
+    </svg>
+  </div>
+  <div class="hero-inner">
+    <a href="../blog.html" class="back-link">← Back to Blog</a>
+    <div class="post-meta">
+      <span class="post-cat">Personal</span>
+      <span class="post-date">September 2024</span>
+      <span class="post-time">4 min read</span>
+    </div>
+    <h1>I've lived on three continents. Germany still surprised me.</h1>
+  </div>
+</header>
+
+<article class="post-body">
+  <p>I've moved countries before. Several times, actually. I grew up in Oman, studied in Bangalore, did my MBA in Birmingham. Packing up and starting somewhere new? Been there. Done that. Bought the overpriced carry-on luggage. So when I landed in Hamburg in April 2022 on a spouse visa, I thought — how hard can it be?</p>
+  <p>Reader, it was hard. Not in the dramatic, movie-montage kind of way. No single terrible moment. Just a slow, quiet realisation that this time, my superpower — the one where I walk into any new place and figure it out — wasn't working. Because for the first time in my life, I couldn't read the room. Literally.</p>
+  <p>Everything was in German. Doctor's appointments. Job applications. The letter from the Finanzamt that looked terrifying (it was terrifying). The neighbour who said something very long and very fast and was clearly expecting a response. My face: :)</p>
+  <p>In the UK, in India, in Oman — English was always the bridge. Here, the bridge was gone, and I was standing at the edge of the river in a nice coat, looking confused.</p>
+  <p><em>Ich verstehe nur Bahnhof</em> — there's a German idiom for exactly this feeling. Literally "I only understand train station." Meaning: I understood absolutely nothing. It was, for several months, my personal motto.</p>
+  <p>So I did what any reasonable person would do. I panicked quietly, then signed up for German classes.</p>
+
+  <h3>The job hunt began. The rejections were creative.</h3>
+  <p>I applied. I got interviews. I smiled through entire conversations in German I only 60% understood, nodding confidently at things I would later Google. Some interviews went well. Some went less well. One recruiter told me my German needed to be "more professional." I went home and watched three hours of German TV just to spite them.</p>
+  <p>Eventually I landed a role — marketing at a Hamburg shipmanagement company. International expeditions, real campaigns, actual results. I loved it. Then it ended — not because of my work, but because the role required professional German and at the time I was barely at A1. The feedback was clear. So I made a decision: I was going to learn this language properly, no shortcuts.</p>
+
+  <h3>Plot twist: I became a barista. Sort of.</h3>
+  <p>I enrolled in German classes and, at the same time, took a part-time role at Espresso House — deliberately. Because classes teach you grammar, but the coffee shop taught me German the way it actually lives: fast, informal, and full of people who won't repeat themselves. I wanted both. The theory and the practice, running in parallel every single day.</p>
+  <p>It worked. My German got better. My people skills got sharper. And I discovered I have a genuine talent for remembering complicated orders, which is, honestly, a transferable skill.</p>
+
+  <h3>Then I found my people.</h3>
+  <p>The real turning point wasn't a job. It was community. I found other people — international, multilingual, ambitious, slightly tired — who were navigating the exact same maze. We compared rejection emails. We celebrated small wins. We reminded each other that the maze has an exit.</p>
+  <p>Hamburg didn't give me an easy welcome. But it gave me something better — the kind of resilience you only build when things are actually hard. Also, my German is pretty good now. Ask my German teacher.</p>
+</article>
+
+<div class="read-next">
+  <p class="read-next-label">Read next</p>
+  <a href="blog2.html" class="read-next-link">Why I knocked on an old people's home's door to learn German →</a>
+</div>
+
+<footer>
+  <p>Built with curiosity and <a href="https://claude.ai/code" target="_blank">Claude Code</a> · snehababu.eu</p>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 30);
+  });
+  function toggleMobileNav() {
+    document.getElementById('hamburger').classList.toggle('open');
+    document.getElementById('mobileNav').classList.toggle('open');
+    document.getElementById('mobileNavOverlay').classList.toggle('open');
+  }
+  let currentLang = 'en';
+  const t = {
+    en: { nav_about:'About', nav_skills:'Skills', nav_experience:'Experience', nav_projects:'Projects', nav_certs:'Certifications', nav_blog:'Blog', nav_contact:'Contact' },
+    de: { nav_about:'Über mich', nav_skills:'Fähigkeiten', nav_experience:'Erfahrung', nav_projects:'Projekte', nav_certs:'Zertifikate', nav_blog:'Blog', nav_contact:'Kontakt' }
+  };
+  function toggleLang() {
+    currentLang = currentLang === 'en' ? 'de' : 'en';
+    document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.getAttribute('data-i18n'); if (t[currentLang][k]) el.textContent = t[currentLang][k]; });
+    document.getElementById('langToggle').textContent = currentLang === 'en' ? 'DE' : 'EN';
+    const m = document.getElementById('langToggleMobile'); if (m) m.textContent = currentLang === 'en' ? 'DE' : 'EN';
+  }
+</script>
+</body>
+</html>

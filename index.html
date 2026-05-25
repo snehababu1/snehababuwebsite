@@ -1,0 +1,3582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sneha Babu — Marketing & Project Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <!-- GA4 tracking code goes here -->
+
+  <style>
+    /* ═══════════════════════════════════════
+       CSS CUSTOM PROPERTIES & RESET
+    ═══════════════════════════════════════ */
+    :root {
+      --coral: #E8506A;
+      --coral-dark: #c73d56;
+      --coral-light: #f07088;
+      --coral-pale: #fde8ec;
+      --white: #FAFAF7;
+      --off-white: #F2F2EE;
+      --light-gray: #f4f4f6;
+      --gray: #8a8a9a;
+      --dark-gray: #444455;
+      --dark: #1a1a2e;
+      --font: 'Poppins', sans-serif;
+      --shadow: 0 4px 24px rgba(232, 80, 106, 0.12);
+      --shadow-lg: 0 8px 40px rgba(232, 80, 106, 0.18);
+      --radius: 16px;
+      --radius-sm: 8px;
+      --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--font);
+      background: var(--white);
+      color: var(--dark);
+      overflow-x: hidden;
+      line-height: 1.7;
+      cursor: none;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ═══════════════════════════════════════
+       SCROLLBAR
+    ═══════════════════════════════════════ */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--light-gray); }
+    ::-webkit-scrollbar-thumb { background: var(--coral); border-radius: 3px; }
+
+    /* ═══════════════════════════════════════
+       UTILITY CLASSES
+    ═══════════════════════════════════════ */
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .section-title span {
+      color: var(--coral);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--gray);
+      margin-bottom: 64px;
+      font-size: 1.05rem;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--coral);
+      border-radius: 2px;
+      margin: 14px auto 0;
+    }
+
+    /* Fade-in on scroll */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-in-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .fade-in-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* ═══════════════════════════════════════
+       NAVBAR
+    ═══════════════════════════════════════ */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 18px 0;
+      transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
+    }
+
+    #navbar.scrolled {
+      background: rgba(255, 255, 255, 0.97);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+      padding: 12px 0;
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .nav-logo {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--coral);
+      letter-spacing: -1px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-links a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--dark-gray);
+      padding: 6px 12px;
+      border-radius: 20px;
+      transition: color var(--transition), background var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--coral);
+      background: var(--coral-pale);
+    }
+
+    .lang-toggle {
+      background: var(--coral);
+      color: white;
+      border: none;
+      padding: 7px 16px;
+      border-radius: 20px;
+      font-family: var(--font);
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+      letter-spacing: 0.5px;
+    }
+
+    .lang-toggle:hover {
+      background: var(--coral-dark);
+      transform: scale(1.05);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2.5px;
+      background: var(--dark);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* ═══════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════ */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background: #1a0e18;
+    }
+
+    /* ── Blob canvas ── */
+    .blob-canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    /* Each blob-shell is positioned; JS sets its translate for mouse interaction.
+       The inner .blob runs the CSS drift animation independently. */
+    .blob-shell {
+      position: absolute;
+      border-radius: 50%;
+      will-change: transform;
+    }
+
+    .blob {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      filter: blur(72px);
+      opacity: 0.62;
+      will-change: transform;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+    }
+
+    /* — Shell sizes & starting positions — */
+    .blob-shell-1 { width: 680px; height: 680px; top: -18%; left: -8%; }
+    .blob-shell-2 { width: 520px; height: 520px; top:   8%; right: -6%; }
+    .blob-shell-3 { width: 580px; height: 580px; bottom: -12%; left: 18%; }
+    .blob-shell-4 { width: 400px; height: 400px; top:  38%; left:  42%; }
+    .blob-shell-5 { width: 340px; height: 340px; bottom: 8%; right: 12%; }
+    .blob-shell-6 { width: 300px; height: 300px; top:  22%; left:  28%; }
+
+    /* — Blob colors — */
+    .blob-1 {
+      background: radial-gradient(circle at 40% 40%, #E8506A 0%, transparent 68%);
+      animation: blobDrift1 20s infinite;
+    }
+    .blob-2 {
+      background: radial-gradient(circle at 55% 45%, #FFB5A7 0%, transparent 68%);
+      animation: blobDrift2 26s infinite;
+    }
+    .blob-3 {
+      background: radial-gradient(circle at 45% 55%, #C9B8E8 0%, transparent 68%);
+      animation: blobDrift3 23s infinite;
+    }
+    .blob-4 {
+      background: radial-gradient(circle at 50% 50%, #FFD166 0%, transparent 68%);
+      animation: blobDrift4 18s infinite;
+    }
+    .blob-5 {
+      background: radial-gradient(circle at 45% 40%, #E8506A 0%, transparent 68%);
+      opacity: 0.45;
+      animation: blobDrift5 28s infinite;
+    }
+    .blob-6 {
+      background: radial-gradient(circle at 55% 50%, #FFB5A7 0%, transparent 68%);
+      opacity: 0.5;
+      animation: blobDrift6 15s infinite;
+    }
+
+    /* — Drift keyframes — each unique so blobs never sync — */
+    @keyframes blobDrift1 {
+      0%   { transform: translate(  0px,   0px) scale(1.00); }
+      20%  { transform: translate( 70px,  55px) scale(1.07); }
+      45%  { transform: translate( 30px, 110px) scale(1.03); }
+      70%  { transform: translate(-55px,  75px) scale(0.95); }
+      100% { transform: translate(  0px,   0px) scale(1.00); }
+    }
+    @keyframes blobDrift2 {
+      0%   { transform: translate(  0px,   0px) scale(1.00); }
+      30%  { transform: translate(-85px,  65px) scale(1.06); }
+      60%  { transform: translate( 45px, -50px) scale(0.97); }
+      85%  { transform: translate(-60px,  30px) scale(1.04); }
+      100% { transform: translate(  0px,   0px) scale(1.00); }
+    }
+    @keyframes blobDrift3 {
+      0%   { transform: translate(  0px,   0px) scale(1.00); }
+      25%  { transform: translate( 75px, -65px) scale(1.10); }
+      55%  { transform: translate(-45px, -35px) scale(0.92); }
+      80%  { transform: translate( 55px,  45px) scale(1.05); }
+      100% { transform: translate(  0px,   0px) scale(1.00); }
+    }
+    @keyframes blobDrift4 {
+      0%   { transform: translate(  0px,   0px) scale(1.00); }
+      35%  { transform: translate(-65px,  85px) scale(1.12); }
+      65%  { transform: translate( 55px, -55px) scale(0.90); }
+      100% { transform: translate(  0px,   0px) scale(1.00); }
+    }
+    @keyframes blobDrift5 {
+      0%   { transform: translate(  0px,   0px) scale(1.00); }
+      40%  { transform: translate( 90px, -75px) scale(1.08); }
+      70%  { transform: translate(-40px,  55px) scale(0.96); }
+      100% { transform: translate(  0px,   0px) scale(1.00); }
+    }
+    @keyframes blobDrift6 {
+      0%   { transform: translate(  0px,   0px) scale(1.00); }
+      50%  { transform: translate(-75px, -60px) scale(1.15); }
+      100% { transform: translate( 55px,  40px) scale(0.92); }
+    }
+
+    /* ── Hero doodles ── */
+    .doodle-canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .doodle {
+      position: absolute;
+      pointer-events: none;
+      animation: doodle-float ease-in-out infinite;
+    }
+
+    @keyframes doodle-float {
+      0%, 100% { transform: rotate(var(--rot, 0deg)) translateY(0px); }
+      50%       { transform: rotate(var(--rot, 0deg)) translateY(-10px); }
+    }
+
+    @media (max-width: 768px) {
+      .doodle-canvas { display: none; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 120px 24px 80px;
+      max-width: 820px;
+    }
+
+    .hero-name {
+      font-size: clamp(3.5rem, 9vw, 7rem);
+      font-weight: 900;
+      color: white;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      animation: fadeDown 0.9s 0.1s ease both;
+    }
+
+    .hero-name span {
+      color: var(--coral);
+    }
+
+    .typewriter-wrap {
+      font-size: clamp(1.2rem, 3vw, 1.75rem);
+      font-weight: 600;
+      color: rgba(255,255,255,0.85);
+      margin: 18px 0 16px;
+      min-height: 2.2rem;
+      animation: fadeDown 1s 0.2s ease both;
+    }
+
+    #typewriter-text {
+      color: var(--coral-light);
+      border-right: 3px solid var(--coral-light);
+      padding-right: 4px;
+      animation: blink 0.75s step-end infinite;
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    .hero-tagline {
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 40px;
+      font-weight: 400;
+      animation: fadeDown 1.1s 0.3s ease both;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeDown 1.2s 0.4s ease both;
+    }
+
+    .btn-primary {
+      background: var(--coral);
+      color: white;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font);
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 4px 20px rgba(232, 80, 106, 0.4);
+    }
+
+    .btn-primary:hover {
+      background: var(--coral-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(232, 80, 106, 0.5);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: white;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border: 2px solid rgba(255,255,255,0.4);
+      cursor: pointer;
+      font-family: var(--font);
+      transition: background var(--transition), transform var(--transition), border-color var(--transition);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: white;
+      transform: translateY(-3px);
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-indicator span {
+      display: block;
+      width: 24px;
+      height: 40px;
+      border: 2px solid rgba(255,255,255,0.4);
+      border-radius: 12px;
+      position: relative;
+      margin: 0 auto;
+    }
+
+    .scroll-indicator span::after {
+      content: '';
+      display: block;
+      width: 4px;
+      height: 8px;
+      background: var(--coral);
+      border-radius: 2px;
+      position: absolute;
+      left: 50%;
+      top: 6px;
+      transform: translateX(-50%);
+      animation: scrollDot 2s infinite;
+    }
+
+    @keyframes scrollDot {
+      0% { top: 6px; opacity: 1; }
+      80% { top: 22px; opacity: 0; }
+      100% { top: 6px; opacity: 0; }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-8px); }
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ═══════════════════════════════════════
+       ABOUT
+    ═══════════════════════════════════════ */
+    #about {
+      background: var(--white);
+    }
+
+    .about-header-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 48px;
+    }
+
+    .about-header-row .section-subtitle {
+      margin-bottom: 0;
+      text-align: center;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    .about-photo-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .photo-circle {
+      width: 270px;
+      height: 270px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--coral-pale), var(--coral));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--coral-dark);
+      text-align: center;
+      border: 5px solid white;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition);
+    }
+
+    .photo-circle:hover {
+      transform: scale(1.04);
+    }
+
+    .photo-circle::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 50%;
+      background: conic-gradient(var(--coral), var(--coral-light), var(--coral-pale), var(--coral));
+      z-index: -1;
+      animation: spin 6s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .photo-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 50%;
+      display: block;
+    }
+
+    .hobbies-section {
+      margin-top: 24px;
+    }
+
+    .hobbies-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--gray);
+      margin-bottom: 10px;
+    }
+
+    .hobbies-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .hobby-tag {
+      background: var(--coral-pale);
+      color: var(--coral-dark);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 5px 13px;
+      border-radius: 20px;
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .hobby-tag:hover {
+      background: #f9d0d8;
+      transform: translateY(-2px);
+    }
+
+    .journey-flags {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 0;
+    }
+
+    .flag-step {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .flag-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--gray);
+    }
+
+    .flag-item .flag {
+      font-size: 1.6rem;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+    }
+
+    .flag-arrow {
+      color: var(--coral);
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .about-text h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .about-text h2 span {
+      color: var(--coral);
+    }
+
+    .about-text p {
+      color: var(--dark-gray);
+      margin-bottom: 16px;
+      font-size: 0.97rem;
+      line-height: 1.8;
+    }
+
+
+    .edu-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .edu-tag {
+      background: var(--coral-pale);
+      color: var(--coral-dark);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+    }
+
+    /* ═══════════════════════════════════════
+       SKILLS
+    ═══════════════════════════════════════ */
+    #skills {
+      background: var(--off-white);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+    }
+
+    .skill-category {
+      background: white;
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .skill-category:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .skill-cat-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--coral);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* ── Currently Learning variant ── */
+    .skill-category--learning {
+      border: 2px solid var(--coral);
+      background: var(--white);
+      box-shadow: 0 2px 20px rgba(232, 80, 106, 0.14);
+    }
+
+    .skill-category--learning:hover {
+      box-shadow: 0 8px 36px rgba(232, 80, 106, 0.24);
+    }
+
+    /* Animated pulse dot — live indicator */
+    .pulse-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--coral);
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .pulse-dot::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: var(--coral);
+      opacity: 0.45;
+      animation: pulseRing 1.8s ease-out infinite;
+    }
+
+    @keyframes pulseRing {
+      0%   { transform: scale(1);   opacity: 0.45; }
+      70%  { transform: scale(2.4); opacity: 0; }
+      100% { transform: scale(2.4); opacity: 0; }
+    }
+
+    /* Learning tags — coral border, white fill */
+    .skill-tag--learning {
+      background: var(--white);
+      color: var(--coral-dark);
+      border: 1.5px solid var(--coral);
+      font-weight: 600;
+      position: relative;
+    }
+
+    .skill-tag--learning:hover {
+      background: var(--coral);
+      color: white;
+      border-color: var(--coral);
+      animation: none;
+    }
+
+    /* Tooltip */
+    .skill-tag--learning::after {
+      content: 'Actively learning — 2025';
+      position: absolute;
+      bottom: calc(100% + 9px);
+      left: 50%;
+      transform: translateX(-50%) translateY(5px);
+      background: var(--dark);
+      color: white;
+      font-size: 0.68rem;
+      font-weight: 500;
+      white-space: nowrap;
+      padding: 5px 10px;
+      border-radius: 6px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.22s ease, transform 0.22s ease;
+      z-index: 20;
+    }
+
+    /* Tooltip caret */
+    .skill-tag--learning::before {
+      content: '';
+      position: absolute;
+      bottom: calc(100% + 3px);
+      left: 50%;
+      transform: translateX(-50%) translateY(5px);
+      border: 5px solid transparent;
+      border-top-color: var(--dark);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.22s ease, transform 0.22s ease;
+      z-index: 20;
+    }
+
+    .skill-tag--learning:hover::after,
+    .skill-tag--learning:hover::before {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .skill-cat-icon {
+      font-size: 1.2rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-tag {
+      background: var(--light-gray);
+      color: var(--dark-gray);
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 20px;
+      cursor: default;
+      transition: background var(--transition), color var(--transition), transform var(--transition);
+      animation: floatTag 3s ease-in-out infinite;
+    }
+
+    .skill-tag:nth-child(odd) {
+      animation-delay: 0.3s;
+    }
+
+    .skill-tag:nth-child(3n) {
+      animation-delay: 0.6s;
+    }
+
+    .skill-tag:hover {
+      background: var(--coral);
+      color: white;
+      transform: scale(1.08) translateY(-2px);
+      animation: none;
+    }
+
+    @keyframes floatTag {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+
+    /* ═══════════════════════════════════════
+       EXPERIENCE TIMELINE
+    ═══════════════════════════════════════ */
+    #experience {
+      background: var(--white);
+    }
+
+    .exp-timeline {
+      position: relative;
+      max-width: 760px;
+      margin: 0 auto;
+      padding-left: 36px;
+    }
+
+    .exp-timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 10px;
+      bottom: 10px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--coral), var(--coral-pale));
+      border-radius: 2px;
+    }
+
+    .exp-entry {
+      position: relative;
+      padding-bottom: 36px;
+    }
+
+    .exp-entry:last-child {
+      padding-bottom: 0;
+    }
+
+    .exp-entry::before {
+      content: '';
+      position: absolute;
+      left: -28px;
+      top: 4px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: white;
+      border: 3px solid var(--coral);
+      box-shadow: 0 0 0 2px var(--coral-pale);
+      transition: transform var(--transition), background var(--transition);
+      z-index: 1;
+    }
+
+    .exp-entry.open::before {
+      background: var(--coral);
+      transform: scale(1.25);
+    }
+
+    .exp-date-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 5px;
+      flex-wrap: wrap;
+    }
+
+    .exp-date-text {
+      font-size: 0.73rem;
+      font-weight: 700;
+      color: var(--coral);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .exp-role-text {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 3px;
+      line-height: 1.3;
+    }
+
+    .exp-company-text {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--gray);
+      margin-bottom: 10px;
+    }
+
+    .exp-toggle {
+      background: none;
+      border: none;
+      padding: 0;
+      font-family: var(--font);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--coral);
+      cursor: pointer;
+      transition: color var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .exp-toggle:hover {
+      color: var(--coral-dark);
+    }
+
+    .exp-details {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      margin-top: 0;
+      transition: max-height 0.38s ease, opacity 0.3s ease, margin-top 0.3s ease;
+    }
+
+    .exp-entry.open .exp-details {
+      max-height: 800px;
+      opacity: 1;
+      margin-top: 14px;
+    }
+
+    .timeline-achievements {
+      padding-left: 0;
+    }
+
+    .timeline-achievements li {
+      font-size: 0.85rem;
+      color: var(--dark-gray);
+      padding: 4px 0 4px 16px;
+      position: relative;
+      line-height: 1.55;
+    }
+
+    .timeline-achievements li::before {
+      content: '▸';
+      color: var(--coral);
+      position: absolute;
+      left: 0;
+      font-size: 0.75rem;
+      top: 5px;
+    }
+
+    .timeline-tag {
+      display: inline-block;
+      background: var(--coral-pale);
+      color: var(--coral-dark);
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 10px;
+    }
+
+    /* ═══════════════════════════════════════
+       OTHER ACTIVITIES & ROLES
+    ═══════════════════════════════════════ */
+    .activities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .activity-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 20px 24px;
+      border-left: 4px solid var(--coral);
+      box-shadow: 0 2px 14px rgba(0,0,0,0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .activity-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(232,80,106,0.12);
+    }
+    .activity-role {
+      font-weight: 600;
+      color: var(--dark);
+      font-size: 0.95rem;
+      margin-bottom: 5px;
+    }
+    .activity-org {
+      color: var(--coral);
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .activity-date {
+      color: #999;
+      font-size: 0.78rem;
+    }
+    .activity-toggle {
+      background: none;
+      border: none;
+      color: var(--coral);
+      font-family: var(--font);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 8px 0 0;
+      display: inline-block;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .activity-toggle:hover { color: var(--coral-dark); }
+    .activity-desc {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.38s ease, opacity 0.3s ease, margin-top 0.3s ease;
+    }
+    .activity-card.open .activity-desc {
+      max-height: 300px;
+      opacity: 1;
+      margin-top: 10px;
+    }
+    .activity-desc p {
+      font-size: 0.85rem;
+      color: #555;
+      line-height: 1.6;
+      margin: 0;
+      padding-top: 8px;
+      border-top: 1px solid var(--coral-pale);
+    }
+
+    /* ═══════════════════════════════════════
+       PROJECTS — FLIP CARDS
+    ═══════════════════════════════════════ */
+    #projects {
+      background: var(--light-gray);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .flip-card {
+      height: 280px;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+    }
+
+    .flip-card:hover .flip-card-inner,
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-front,
+    .flip-back {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+      text-align: center;
+    }
+
+    .flip-front {
+      background: white;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      border: 1px solid rgba(232, 80, 106, 0.1);
+    }
+
+    .flip-back {
+      background: linear-gradient(135deg, var(--coral), var(--coral-dark));
+      color: white;
+      transform: rotateY(180deg);
+    }
+
+    .flip-project-icon {
+      font-size: 2.8rem;
+      margin-bottom: 16px;
+    }
+
+    .flip-project-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+
+    .flip-project-tag {
+      background: var(--coral-pale);
+      color: var(--coral-dark);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 14px;
+      border-radius: 20px;
+    }
+
+    .flip-back h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .flip-back p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      line-height: 1.6;
+    }
+
+    .flip-hint {
+      font-size: 0.72rem;
+      color: var(--gray);
+      margin-top: 12px;
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════
+       CERTIFICATIONS
+    ═══════════════════════════════════════ */
+    #certifications {
+      background: var(--white);
+    }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .cert-badge {
+      background: var(--white);
+      border: 1px solid rgba(232, 80, 106, 0.15);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cert-badge::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--coral);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .cert-badge:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+      border-color: var(--coral);
+    }
+
+    .cert-badge:hover::before {
+      opacity: 1;
+    }
+
+    .cert-icon {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cert-info h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 4px;
+      line-height: 1.35;
+    }
+
+    .cert-info p {
+      font-size: 0.77rem;
+      color: var(--gray);
+    }
+
+    .cert-status {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 10px;
+      display: inline-block;
+      margin-top: 6px;
+    }
+
+    .cert-status.complete {
+      background: #e8f5e9;
+      color: #2e7d32;
+    }
+
+    .cert-status.progress {
+      background: #fff3e0;
+      color: #e65100;
+    }
+
+    /* ═══════════════════════════════════════
+       BLOG
+    ═══════════════════════════════════════ */
+    #blog {
+      background: var(--off-white);
+    }
+
+    .blog-cta-btn {
+      display: inline-block;
+      background: var(--coral);
+      color: white;
+      font-family: var(--font);
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 14px 36px;
+      border-radius: 32px;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 4px 18px rgba(232, 80, 106, 0.25);
+    }
+
+    .blog-cta-btn:hover {
+      background: var(--coral-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(232, 80, 106, 0.35);
+    }
+
+    .blog-filters {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .filter-btn {
+      background: var(--light-gray);
+      color: var(--dark-gray);
+      border: none;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-family: var(--font);
+      font-size: 0.83rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition);
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--coral);
+      color: white;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+    }
+
+    .blog-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.05);
+      border: 1px solid transparent;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      cursor: pointer;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--coral);
+    }
+
+    .blog-card.hidden {
+      display: none;
+    }
+
+    .blog-cat-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--coral);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .blog-cat-tag::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--coral);
+    }
+
+    .blog-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 12px;
+      line-height: 1.45;
+    }
+
+    .blog-preview {
+      font-size: 0.86rem;
+      color: var(--gray);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+
+    .blog-read-more {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--coral);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: gap var(--transition);
+    }
+
+    .blog-card:hover .blog-read-more {
+      gap: 10px;
+    }
+
+    /* ═══════════════════════════════════════
+       CONTACT
+    ═══════════════════════════════════════ */
+    #contact {
+      background: var(--white);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .contact-info h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .contact-info h3 span {
+      color: var(--coral);
+    }
+
+    .contact-info p {
+      color: var(--dark-gray);
+      font-size: 0.95rem;
+      margin-bottom: 28px;
+      line-height: 1.8;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .contact-link-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      background: var(--light-gray);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--dark-gray);
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .contact-link-item:hover {
+      background: var(--coral-pale);
+      color: var(--coral-dark);
+      transform: translateX(5px);
+    }
+
+    .contact-link-item .link-icon {
+      font-size: 1.2rem;
+      width: 28px;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--dark-gray);
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid #e2e2e8;
+      border-radius: var(--radius-sm);
+      font-family: var(--font);
+      font-size: 0.9rem;
+      color: var(--dark);
+      background: var(--off-white);
+      transition: border-color var(--transition), box-shadow var(--transition);
+      resize: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--coral);
+      box-shadow: 0 0 0 3px rgba(232, 80, 106, 0.12);
+    }
+
+    .form-group textarea {
+      height: 110px;
+    }
+
+    .btn-coral {
+      background: var(--coral);
+      color: white;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font);
+      width: 100%;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+
+    .btn-coral:hover {
+      background: var(--coral-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(232, 80, 106, 0.35);
+    }
+
+    .cv-request-section {
+      text-align: center;
+      padding-top: 48px;
+      border-top: 1px solid var(--light-gray);
+      margin-top: 64px;
+    }
+
+    .cv-request-section p {
+      color: var(--gray);
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+    }
+
+    /* ═══════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════ */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 0.82rem;
+    }
+
+    footer a {
+      color: var(--coral);
+      font-weight: 600;
+    }
+
+    /* ═══════════════════════════════════════
+       MODAL
+    ═══════════════════════════════════════ */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal-box {
+      background: white;
+      border-radius: var(--radius);
+      padding: 40px;
+      max-width: 480px;
+      width: 100%;
+      position: relative;
+      transform: scale(0.9) translateY(20px);
+      transition: transform 0.3s ease;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+
+    .modal-overlay.open .modal-box {
+      transform: scale(1) translateY(0);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: var(--gray);
+      font-family: var(--font);
+      transition: color var(--transition);
+      line-height: 1;
+    }
+
+    .modal-close:hover {
+      color: var(--coral);
+    }
+
+    .modal-box h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: var(--dark);
+    }
+
+    .modal-box p {
+      color: var(--gray);
+      font-size: 0.88rem;
+      margin-bottom: 24px;
+    }
+
+    .form-success {
+      text-align: center;
+      padding: 20px 0;
+      display: none;
+    }
+
+    .form-success .success-icon {
+      font-size: 3rem;
+      margin-bottom: 12px;
+    }
+
+    .form-success h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    .form-success p {
+      color: var(--gray);
+      font-size: 0.88rem;
+    }
+
+    /* ═══════════════════════════════════════
+       MOBILE NAV DRAWER
+    ═══════════════════════════════════════ */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 260px;
+      height: 100vh;
+      background: white;
+      z-index: 1500;
+      padding: 80px 32px 40px;
+      flex-direction: column;
+      gap: 8px;
+      box-shadow: -4px 0 30px rgba(0,0,0,0.1);
+      transition: right 0.35s ease;
+    }
+
+    .mobile-nav.open {
+      right: 0;
+    }
+
+    .mobile-nav a {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--dark-gray);
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      transition: color var(--transition), background var(--transition);
+    }
+
+    .mobile-nav a:hover {
+      color: var(--coral);
+      background: var(--coral-pale);
+    }
+
+    .mobile-nav-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+      z-index: 1400;
+    }
+
+    .mobile-nav-overlay.open {
+      display: block;
+    }
+
+    /* ═══════════════════════════════════════
+       VOLUNTEER STRIP
+    ═══════════════════════════════════════ */
+    .volunteer-strip {
+      background: var(--coral-pale);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-top: 32px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .volunteer-strip .vol-icon {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+    }
+
+    .volunteer-strip h4 {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--coral-dark);
+      margin-bottom: 6px;
+    }
+
+    .volunteer-strip ul li {
+      font-size: 0.82rem;
+      color: var(--dark-gray);
+      padding: 2px 0 2px 12px;
+      position: relative;
+    }
+
+    .volunteer-strip ul li::before {
+      content: '♥';
+      color: var(--coral);
+      position: absolute;
+      left: 0;
+      font-size: 0.65rem;
+      top: 4px;
+    }
+
+    /* ═══════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════ */
+    @media (max-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        text-align: center;
+      }
+
+      .about-photo-wrap { margin: 0 auto; }
+
+      .exp-timeline { padding-left: 26px; }
+      .exp-entry::before { left: -20px; }
+
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .mobile-nav { display: flex; }
+
+      .projects-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .section { padding: 72px 0; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .flip-card { height: 240px; }
+      .modal-box { padding: 28px 20px; }
+      .blog-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ═══════════════════════════════════════
+       STAGGER DELAY HELPERS
+    ═══════════════════════════════════════ */
+    .delay-1 { transition-delay: 0.1s !important; }
+    .delay-2 { transition-delay: 0.2s !important; }
+    .delay-3 { transition-delay: 0.3s !important; }
+    .delay-4 { transition-delay: 0.4s !important; }
+    .delay-5 { transition-delay: 0.5s !important; }
+    .delay-6 { transition-delay: 0.6s !important; }
+    /* ── BUTTERFLY CURSOR ── */
+    #butterfly-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 32px;
+      height: 32px;
+      pointer-events: none;
+      z-index: 999999;
+      transform: translate(-50%, -50%);
+      will-change: left, top;
+    }
+    .wing-l {
+      transform-box: fill-box;
+      transform-origin: right center;
+      animation: wing-flap 0.48s ease-in-out infinite alternate;
+    }
+    .wing-r {
+      transform-box: fill-box;
+      transform-origin: left center;
+      animation: wing-flap 0.48s ease-in-out infinite alternate;
+    }
+    @keyframes wing-flap {
+      0%   { transform: scaleX(1); }
+      100% { transform: scaleX(0.12); }
+    }
+    @media (pointer: coarse) {
+      body { cursor: auto; }
+      #butterfly-cursor { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="butterfly-cursor" aria-hidden="true">
+  <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    <!-- Left wings -->
+    <g class="wing-l">
+      <path d="M15 13 C9 4 1 3 3 12 C5 18 11 18 15 15" fill="#E8506A"/>
+      <path d="M15 17 C8 16 2 21 5 26 C7 29 13 27 15 22" fill="#E8506A" opacity="0.72"/>
+    </g>
+    <!-- Right wings -->
+    <g class="wing-r">
+      <path d="M17 13 C23 4 31 3 29 12 C27 18 21 18 17 15" fill="#E8506A"/>
+      <path d="M17 17 C24 16 30 21 27 26 C25 29 19 27 17 22" fill="#E8506A" opacity="0.72"/>
+    </g>
+    <!-- Body -->
+    <ellipse cx="16" cy="17" rx="1.5" ry="7" fill="#c73d56"/>
+    <!-- Antennae -->
+    <line x1="15" y1="11" x2="11" y2="5" stroke="#c73d56" stroke-width="1" stroke-linecap="round"/>
+    <line x1="17" y1="11" x2="21" y2="5" stroke="#c73d56" stroke-width="1" stroke-linecap="round"/>
+    <circle cx="11" cy="4.5" r="1.2" fill="#c73d56"/>
+    <circle cx="21" cy="4.5" r="1.2" fill="#c73d56"/>
+  </svg>
+</div>
+
+<!-- ══════════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">SB</a>
+    <div class="nav-links">
+      <a href="#about"   data-i18n="nav_about">About</a>
+      <a href="#skills"  data-i18n="nav_skills">Skills</a>
+      <a href="#experience" data-i18n="nav_experience">Experience</a>
+      <a href="#projects" data-i18n="nav_projects">Projects</a>
+      <a href="#certifications" data-i18n="nav_certs">Certifications</a>
+      <a href="blog.html" data-i18n="nav_blog">Blog</a>
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
+      <button class="lang-toggle" id="langToggle" onclick="toggleLang()">DE</button>
+    </div>
+    <div class="hamburger" id="hamburger" onclick="toggleMobileNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile nav drawer -->
+<div class="mobile-nav-overlay" id="mobileNavOverlay" onclick="toggleMobileNav()"></div>
+<nav class="mobile-nav" id="mobileNav">
+  <a href="#about"   onclick="toggleMobileNav()" data-i18n="nav_about">About</a>
+  <a href="#skills"  onclick="toggleMobileNav()" data-i18n="nav_skills">Skills</a>
+  <a href="#experience" onclick="toggleMobileNav()" data-i18n="nav_experience">Experience</a>
+  <a href="#projects" onclick="toggleMobileNav()" data-i18n="nav_projects">Projects</a>
+  <a href="#certifications" onclick="toggleMobileNav()" data-i18n="nav_certs">Certifications</a>
+  <a href="blog.html" onclick="toggleMobileNav()" data-i18n="nav_blog">Blog</a>
+  <a href="#contact" onclick="toggleMobileNav()" data-i18n="nav_contact">Contact</a>
+  <button class="lang-toggle" onclick="toggleLang(); toggleMobileNav();" style="width:fit-content; margin-top:12px;" id="langToggleMobile">DE</button>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section id="hero">
+  <div class="blob-canvas" id="blobCanvas">
+    <div class="blob-shell blob-shell-1"><div class="blob blob-1"></div></div>
+    <div class="blob-shell blob-shell-2"><div class="blob blob-2"></div></div>
+    <div class="blob-shell blob-shell-3"><div class="blob blob-3"></div></div>
+    <div class="blob-shell blob-shell-4"><div class="blob blob-4"></div></div>
+    <div class="blob-shell blob-shell-5"><div class="blob blob-5"></div></div>
+    <div class="blob-shell blob-shell-6"><div class="blob blob-6"></div></div>
+  </div>
+
+  <!-- Hand-drawn doodles — z-index 1 (above blobs, below text) -->
+  <div class="doodle-canvas">
+
+    <!-- Coffee cup · top-left -->
+    <div class="doodle" style="top:7%;left:4%;--rot:-8deg;animation-duration:4.2s;animation-delay:0s">
+      <svg width="55" height="64" viewBox="0 0 70 78" fill="none" stroke="rgba(245,240,232,0.8)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M 11 31 L 14 57 Q 32 65 51 57 L 54 31"/>
+        <ellipse cx="32" cy="31" rx="22" ry="6"/>
+        <path d="M 54 38 Q 67 38 67 47 Q 67 57 54 55"/>
+        <ellipse cx="32" cy="72" rx="27" ry="5"/>
+        <path d="M 20 26 Q 16 19 20 13 Q 24 7 20 2"/>
+        <path d="M 32 24 Q 28 17 32 11 Q 36 5 32 1"/>
+        <path d="M 44 26 Q 48 19 44 13 Q 40 7 44 2"/>
+      </svg>
+    </div>
+
+    <!-- Sparkle / starburst · top-right -->
+    <div class="doodle" style="top:5%;right:4%;--rot:12deg;animation-duration:3.8s;animation-delay:0.9s">
+      <svg width="42" height="42" viewBox="0 0 50 50" fill="none" stroke="rgba(245,240,232,0.8)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M 25 3 L 28 22 L 47 25 L 28 28 L 25 47 L 22 28 L 3 25 L 22 22 Z"/>
+        <line x1="9"  y1="9"  x2="13" y2="13"/>
+        <line x1="41" y1="9"  x2="37" y2="13"/>
+        <line x1="9"  y1="41" x2="13" y2="37"/>
+        <line x1="41" y1="41" x2="37" y2="37"/>
+      </svg>
+    </div>
+
+    <!-- Airplane · bottom-left -->
+    <div class="doodle" style="bottom:12%;left:4%;--rot:-32deg;animation-duration:5.1s;animation-delay:1.6s">
+      <svg width="54" height="42" viewBox="0 0 72 42" fill="none" stroke="rgba(245,240,232,0.8)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M 5 22 Q 35 17 58 22 Q 35 27 5 22 Z"/>
+        <path d="M 56 22 L 67 19 L 67 25 Z"/>
+        <path d="M 30 22 L 20 6 L 44 20"/>
+        <path d="M 10 22 L 7 13"/>
+        <path d="M 8 23 L 5 31"/>
+      </svg>
+    </div>
+
+    <!-- Paintbrush · bottom-right -->
+    <div class="doodle" style="bottom:14%;right:5%;--rot:18deg;animation-duration:4.6s;animation-delay:0.4s">
+      <svg width="34" height="58" viewBox="0 0 30 72" fill="none" stroke="rgba(245,240,232,0.8)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="11" y="4" width="8" height="32" rx="2"/>
+        <rect x="9"  y="34" width="12" height="7" rx="1"/>
+        <path d="M 9 41 Q 7 54 15 68 Q 23 54 21 41 Z"/>
+        <line x1="11" y1="13" x2="19" y2="13"/>
+        <line x1="11" y1="21" x2="19" y2="21"/>
+        <line x1="11" y1="29" x2="19" y2="29"/>
+      </svg>
+    </div>
+
+    <!-- Spiral · middle-left edge -->
+    <div class="doodle" style="top:46%;left:2%;--rot:0deg;animation-duration:4.9s;animation-delay:2.2s">
+      <svg width="38" height="38" viewBox="0 0 46 46" fill="none" stroke="rgba(245,240,232,0.8)" stroke-width="4" stroke-linecap="round">
+        <path d="M 23 23 Q 23 19 27 17 Q 33 14 36 20 Q 38 27 32 32 Q 24 37 16 31 Q 9 24 12 15 Q 16 5 26 5 Q 38 5 41 19 Q 43 33 31 41"/>
+      </svg>
+    </div>
+
+    <!-- Compass rose · middle-right edge -->
+    <div class="doodle" style="top:43%;right:2%;--rot:6deg;animation-duration:4.3s;animation-delay:1.1s">
+      <svg width="50" height="50" viewBox="0 0 60 60" fill="none" stroke="rgba(245,240,232,0.8)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M 30 6 L 26 20 L 30 17 L 34 20 Z"/>
+        <path d="M 30 54 L 26 40 L 30 43 L 34 40 Z"/>
+        <path d="M 54 30 L 40 26 L 43 30 L 40 34 Z"/>
+        <path d="M 6 30 L 20 26 L 17 30 L 20 34 Z"/>
+        <circle cx="30" cy="30" r="5"/>
+        <line x1="13" y1="13" x2="18" y2="18"/>
+        <line x1="47" y1="13" x2="42" y2="18"/>
+        <line x1="13" y1="47" x2="18" y2="42"/>
+        <line x1="47" y1="47" x2="42" y2="42"/>
+      </svg>
+    </div>
+
+    <!-- Star A · upper-left area (30px) -->
+    <div class="doodle" style="top:26%;left:14%;--rot:14deg;animation-duration:3.5s;animation-delay:0.6s">
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="rgba(245,240,232,0.8)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M 15 2 L 17 13 L 28 15 L 17 17 L 15 28 L 13 17 L 2 15 L 13 13 Z"/>
+      </svg>
+    </div>
+
+    <!-- Star B · lower-right area (22px) -->
+    <div class="doodle" style="bottom:25%;right:19%;--rot:-6deg;animation-duration:4.7s;animation-delay:2.0s">
+      <svg width="22" height="22" viewBox="0 0 30 30" fill="none" stroke="rgba(245,240,232,0.8)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M 15 2 L 17 13 L 28 15 L 17 17 L 15 28 L 13 17 L 2 15 L 13 13 Z"/>
+      </svg>
+    </div>
+
+    <!-- Star C · upper-right area (26px) -->
+    <div class="doodle" style="top:18%;right:15%;--rot:22deg;animation-duration:3.9s;animation-delay:0.3s">
+      <svg width="26" height="26" viewBox="0 0 30 30" fill="none" stroke="rgba(245,240,232,0.8)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M 15 2 L 17 13 L 28 15 L 17 17 L 15 28 L 13 17 L 2 15 L 13 13 Z"/>
+      </svg>
+    </div>
+
+    <!-- Star D · lower-left area (18px) -->
+    <div class="doodle" style="top:62%;left:20%;--rot:8deg;animation-duration:5.3s;animation-delay:1.7s">
+      <svg width="18" height="18" viewBox="0 0 30 30" fill="none" stroke="rgba(245,240,232,0.8)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M 15 2 L 17 13 L 28 15 L 17 17 L 15 28 L 13 17 L 2 15 L 13 13 Z"/>
+      </svg>
+    </div>
+
+    <!-- Heart · top-center -->
+    <div class="doodle" style="top:7%;left:45%;--rot:-4deg;animation-duration:4.1s;animation-delay:0.8s">
+      <svg width="28" height="26" viewBox="0 0 34 32" fill="none" stroke="rgba(245,240,232,0.8)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M 17 29 Q 3 20 3 12 Q 3 5 10 5 Q 14 5 17 9 Q 20 5 24 5 Q 31 5 31 12 Q 31 20 17 29 Z"/>
+      </svg>
+    </div>
+
+    <!-- Bar chart · marketing nod · lower-left -->
+    <div class="doodle" style="top:64%;left:6%;--rot:4deg;animation-duration:4.8s;animation-delay:1.3s">
+      <svg width="44" height="40" viewBox="0 0 50 46" fill="none" stroke="rgba(245,240,232,0.8)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="4"  y1="42" x2="46" y2="42"/>
+        <line x1="6"  y1="8"  x2="6"  y2="42"/>
+        <rect x="9"  y="30" width="9" height="12"/>
+        <rect x="22" y="14" width="9" height="28"/>
+        <rect x="35" y="22" width="9" height="20"/>
+        <path d="M 10 28 Q 26 12 42 20"/>
+        <path d="M 39 17 L 42 20 L 39 23"/>
+      </svg>
+    </div>
+
+    <!-- Lightbulb · lower-right -->
+    <div class="doodle" style="top:58%;right:6%;--rot:-6deg;animation-duration:5.0s;animation-delay:2.5s">
+      <svg width="42" height="52" viewBox="0 0 42 58" fill="none" stroke="rgba(245,240,232,0.8)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M 7 22 Q 7 6 21 6 Q 35 6 35 22 Q 35 31 28 37 L 27 47 L 15 47 L 14 37 Q 7 31 7 22 Z"/>
+        <line x1="15" y1="43" x2="27" y2="43"/>
+        <line x1="15" y1="39" x2="27" y2="39"/>
+        <rect x="13" y="47" width="16" height="5" rx="2"/>
+        <path d="M 10 14 L 7 9"/>
+        <path d="M 7 22 L 3 21"/>
+      </svg>
+    </div>
+
+    <!-- Rocket · center-left upper -->
+    <div class="doodle" style="top:30%;left:23%;--rot:20deg;animation-duration:3.7s;animation-delay:0.5s">
+      <svg width="46" height="56" viewBox="0 0 44 60" fill="none" stroke="rgba(245,240,232,0.8)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M 22 4 Q 12 10 10 28 L 12 42 L 22 46 L 32 42 L 34 28 Q 32 10 22 4 Z"/>
+        <path d="M 12 38 L 4 48 L 14 46"/>
+        <path d="M 32 38 L 40 48 L 30 46"/>
+        <circle cx="22" cy="24" r="6"/>
+        <path d="M 16 46 Q 18 55 22 52 Q 26 55 28 46"/>
+      </svg>
+    </div>
+
+    <!-- Megaphone · center-right upper · marketing nod -->
+    <div class="doodle" style="top:25%;right:25%;--rot:-12deg;animation-duration:4.4s;animation-delay:1.8s">
+      <svg width="52" height="42" viewBox="0 0 62 46" fill="none" stroke="rgba(245,240,232,0.8)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="4" y="18" width="14" height="14" rx="2"/>
+        <path d="M 18 13 L 46 6 L 46 40 L 18 33 Z"/>
+        <path d="M 50 16 Q 56 23 50 30"/>
+        <path d="M 54 12 Q 62 23 54 34"/>
+        <line x1="9" y1="32" x2="9" y2="40"/>
+      </svg>
+    </div>
+
+    <!-- Clipboard · center-left lower -->
+    <div class="doodle" style="top:52%;left:21%;--rot:-5deg;animation-duration:5.2s;animation-delay:0.7s">
+      <svg width="42" height="48" viewBox="0 0 50 58" fill="none" stroke="rgba(245,240,232,0.8)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="6" y="12" width="38" height="44" rx="4"/>
+        <rect x="17" y="5"  width="16" height="14" rx="4"/>
+        <line x1="17" y1="12" x2="33" y2="12"/>
+        <line x1="12" y1="28" x2="38" y2="28"/>
+        <line x1="12" y1="36" x2="38" y2="36"/>
+        <line x1="12" y1="44" x2="38" y2="44"/>
+        <line x1="12" y1="52" x2="26" y2="52"/>
+      </svg>
+    </div>
+
+    <!-- Globe · center-right lower -->
+    <div class="doodle" style="top:55%;right:22%;--rot:4deg;animation-duration:4.0s;animation-delay:2.3s">
+      <svg width="46" height="46" viewBox="0 0 56 56" fill="none" stroke="rgba(245,240,232,0.8)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="28" cy="28" r="24"/>
+        <line  x1="4"  y1="28" x2="52" y2="28"/>
+        <line  x1="28" y1="4"  x2="28" y2="52"/>
+        <ellipse cx="28" cy="28" rx="10" ry="24"/>
+        <path d="M 8 15 Q 28 9 48 15"/>
+        <path d="M 8 41 Q 28 47 48 41"/>
+      </svg>
+    </div>
+
+    <!-- Hashtag · upper center-left -->
+    <div class="doodle" style="top:14%;left:32%;--rot:8deg;animation-duration:3.6s;animation-delay:1.4s">
+      <svg width="36" height="36" viewBox="0 0 40 40" fill="none" stroke="rgba(245,240,232,0.8)" stroke-width="4" stroke-linecap="round">
+        <line x1="14" y1="3"  x2="10" y2="37"/>
+        <line x1="26" y1="3"  x2="22" y2="37"/>
+        <line x1="4"  y1="13" x2="36" y2="13"/>
+        <line x1="4"  y1="27" x2="36" y2="27"/>
+      </svg>
+    </div>
+
+    <!-- Crown · upper center-right -->
+    <div class="doodle" style="top:13%;right:32%;--rot:-10deg;animation-duration:4.5s;animation-delay:0.2s">
+      <svg width="48" height="36" viewBox="0 0 54 40" fill="none" stroke="rgba(245,240,232,0.8)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M 4 36 L 50 36 L 44 16 L 36 28 L 27 8 L 18 28 L 10 16 Z"/>
+        <circle cx="10" cy="16" r="3"/>
+        <circle cx="27" cy="8"  r="3"/>
+        <circle cx="44" cy="16" r="3"/>
+      </svg>
+    </div>
+
+    <!-- Flower · lower center-left -->
+    <div class="doodle" style="top:74%;left:29%;--rot:0deg;animation-duration:5.4s;animation-delay:1.6s">
+      <svg width="38" height="38" viewBox="0 0 48 48" fill="none" stroke="rgba(245,240,232,0.8)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="24" cy="8"  r="7"/>
+        <circle cx="24" cy="40" r="7"/>
+        <circle cx="8"  cy="16" r="7"/>
+        <circle cx="40" cy="16" r="7"/>
+        <circle cx="8"  cy="32" r="7"/>
+        <circle cx="40" cy="32" r="7"/>
+        <circle cx="24" cy="24" r="8"/>
+      </svg>
+    </div>
+
+    <!-- Pencil writing a line · lower center-right -->
+    <div class="doodle" style="top:75%;right:28%;--rot:-15deg;animation-duration:4.2s;animation-delay:2.8s">
+      <svg width="52" height="32" viewBox="0 0 62 34" fill="none" stroke="rgba(245,240,232,0.8)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3"  y="13" width="30" height="10" rx="2"/>
+        <rect x="1"  y="13" width="5"  height="10" rx="2"/>
+        <path d="M 33 13 L 43 18 L 33 23 Z"/>
+        <path d="M 45 21 Q 51 16 56 21 Q 59 23 61 19"/>
+      </svg>
+    </div>
+
+    <!-- Smiley face · center-left -->
+    <div class="doodle" style="top:40%;left:26%;--rot:5deg;animation-duration:3.9s;animation-delay:1.0s">
+      <svg width="40" height="40" viewBox="0 0 46 46" fill="none" stroke="rgba(245,240,232,0.8)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="23" cy="23" r="20"/>
+        <circle cx="15" cy="18" r="2.5"/>
+        <circle cx="31" cy="18" r="2.5"/>
+        <path d="M 13 28 Q 23 37 33 28"/>
+      </svg>
+    </div>
+
+  </div>
+
+  <div class="hero-content">
+    <h1 class="hero-name">Sneha <span>Babu</span></h1>
+    <div class="typewriter-wrap">
+      <span id="typewriter-text"></span>
+    </div>
+    <p class="hero-tagline" data-i18n="hero_tagline">Globally experienced. Hamburg-based. Ready to make an impact.</p>
+    <div class="hero-buttons">
+      <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" data-i18n="hero_cta1">Get in Touch</button>
+      <button class="btn-outline" onclick="openModal('cvModal')" data-i18n="hero_cta2">Request CV</button>
+    </div>
+  </div>
+  <div class="scroll-indicator"><span></span></div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     ABOUT
+══════════════════════════════════════════ -->
+<section id="about" class="section">
+  <div class="container">
+    <h2 class="section-title fade-in" data-i18n="about_title">About <span>Me</span></h2>
+
+    <div class="about-header-row fade-in delay-1">
+      <p class="section-subtitle" data-i18n="about_subtitle">A cross-cultural story with a Hamburg chapter</p>
+      <div class="journey-flags">
+        <div class="flag-step">
+          <div class="flag-item"><span class="flag">🇴🇲</span><span>Oman</span></div>
+        </div>
+        <span class="flag-arrow">→</span>
+        <div class="flag-step">
+          <div class="flag-item"><span class="flag">🇮🇳</span><span>India</span></div>
+        </div>
+        <span class="flag-arrow">→</span>
+        <div class="flag-step">
+          <div class="flag-item"><span class="flag">🇬🇧</span><span>UK</span></div>
+        </div>
+        <span class="flag-arrow">→</span>
+        <div class="flag-step">
+          <div class="flag-item"><span class="flag">🇩🇪</span><span>Germany</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-photo-wrap fade-in-left">
+        <div class="photo-circle">
+          <img src="sneha.jpeg" alt="Sneha Babu" style="object-fit:cover;object-position:top;" />
+        </div>
+      </div>
+
+      <div class="about-text fade-in-right">
+        <h2 data-i18n="about_heading">Shaped by <span>Many Worlds</span></h2>
+
+        <p data-i18n="about_p1">Hi, I'm someone who doesn't just work across industries—I live across them. With a BA in Media, Communication, and Business Psychology from Bangalore University and an MBA in International Business from Birmingham City University, my career has been shaped by a love for understanding what makes people tick. My journey has taken me from Oman and India to the UK and Germany, turning me into a cultural chameleon who can adapt to just about any environment.</p>
+
+        <p data-i18n="about_p2">Professionally, I've spent over three years blending the creative world of marketing (think SEO, social media, Google Ads, and content creation) with the structured world of project management and operations. But I don't stop there. I have a massive curiosity for how things move and connect, which draws me toward the tech, IT, and logistics sectors too.</p>
+
+        <p data-i18n="about_p3">At my core, I am a listener first and a strategist second. My cross-cultural adventures have made me deeply empathetic, highly adaptive, and a bit of a perfectionist when it comes to the details. I'm also a big believer in working smarter, regularly teaming up with AI tools to supercharge my creativity and keep projects running flawlessly. Whether I'm designing an email campaign, mapping out operational workflows, or mastering my next German conversation (C1 is in the works!), I bring a global perspective and a lot of heart to everything I do.</p>
+
+        <div class="edu-tags">
+          <span class="edu-tag">🎓 MBA — Birmingham City University</span>
+          <span class="edu-tag">🎓 BA — Bangalore University</span>
+          <span class="edu-tag">📍 Hamburg, Germany</span>
+        </div>
+
+        <div class="hobbies-section">
+          <p class="hobbies-label" data-i18n="hobbies_label">A little about me beyond work</p>
+          <div class="hobbies-tags">
+            <span class="hobby-tag">Singing 🎵</span>
+            <span class="hobby-tag">Travelling ✈️</span>
+            <span class="hobby-tag">Occasional Reading 📚</span>
+            <span class="hobby-tag">Designing 🎨</span>
+            <span class="hobby-tag">Badminton 🏸</span>
+            <span class="hobby-tag">Movie Buff 🎬</span>
+            <span class="hobby-tag">Coffee Tasting & Latte Art ☕</span>
+          </div>
+        </div>
+
+
+
+        <div class="volunteer-strip fade-in delay-5">
+          <div class="vol-icon">🤝</div>
+          <div>
+            <h4 data-i18n="vol_title">Volunteer & Community</h4>
+            <ul>
+              <li data-i18n="vol1">ASB Community Volunteer — Altersheim Hamburg (2025–present)</li>
+              <li data-i18n="vol2">Kantorei Hamburg Choir Member (2024–2025)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SKILLS
+══════════════════════════════════════════ -->
+<section id="skills" class="section">
+  <div class="container">
+    <h2 class="section-title fade-in" data-i18n="skills_title">My <span>Skills</span></h2>
+    <p class="section-subtitle fade-in delay-1" data-i18n="skills_subtitle">Tools, platforms, and superpowers I bring to the table</p>
+
+    <div class="skills-grid">
+
+      <div class="skill-category skill-category--learning fade-in delay-1">
+        <div class="skill-cat-title">
+          <span class="pulse-dot"></span>
+          <span data-i18n="cat_learning">Currently Learning</span>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag skill-tag--learning">Vibe Coding</span>
+          <span class="skill-tag skill-tag--learning">AI-Assisted Development</span>
+          <span class="skill-tag skill-tag--learning">Prompt Engineering</span>
+          <span class="skill-tag skill-tag--learning">Claude Code</span>
+        </div>
+      </div>
+
+      <div class="skill-category fade-in delay-2">
+        <div class="skill-cat-title"><span class="skill-cat-icon">📣</span><span data-i18n="cat_marketing">Marketing</span></div>
+        <div class="skill-tags">
+          <span class="skill-tag">SEO</span>
+          <span class="skill-tag">Google Ads</span>
+          <span class="skill-tag">Social Media Marketing</span>
+          <span class="skill-tag">Email Marketing</span>
+          <span class="skill-tag">Content Creation</span>
+          <span class="skill-tag">Campaign Management</span>
+          <span class="skill-tag">Semrush</span>
+          <span class="skill-tag">Paid Ads</span>
+          <span class="skill-tag">LinkedIn Ads Manager</span>
+          <span class="skill-tag">Meta Business Suite</span>
+          <span class="skill-tag">HubSpot CRM</span>
+          <span class="skill-tag">Google Analytics GA4</span>
+          <span class="skill-tag">Mailchimp</span>
+          <span class="skill-tag">WordPress</span>
+        </div>
+      </div>
+
+      <div class="skill-category fade-in delay-3">
+        <div class="skill-cat-title"><span class="skill-cat-icon">📋</span><span data-i18n="cat_pm">Project Management</span></div>
+        <div class="skill-tags">
+          <span class="skill-tag">Agile / Scrum (PSM-I)</span>
+          <span class="skill-tag">Jira</span>
+          <span class="skill-tag">Notion</span>
+          <span class="skill-tag">Confluence</span>
+          <span class="skill-tag">Miro</span>
+          <span class="skill-tag">Power BI</span>
+          <span class="skill-tag">Stakeholder Management</span>
+          <span class="skill-tag">Process Improvement</span>
+          <span class="skill-tag">Risk Management</span>
+          <span class="skill-tag">Cross-functional Collaboration</span>
+        </div>
+      </div>
+
+      <div class="skill-category fade-in delay-4">
+        <div class="skill-cat-title"><span class="skill-cat-icon">🤝</span><span data-i18n="cat_interpersonal">Interpersonal Skills</span></div>
+        <div class="skill-tags">
+          <span class="skill-tag">Communication</span>
+          <span class="skill-tag">Team Leadership</span>
+          <span class="skill-tag">Problem Solving</span>
+          <span class="skill-tag">Adaptability</span>
+          <span class="skill-tag">Cultural Awareness</span>
+          <span class="skill-tag">Negotiation</span>
+          <span class="skill-tag">Presentation Skills</span>
+          <span class="skill-tag">Conflict Resolution</span>
+        </div>
+      </div>
+
+      <div class="skill-category fade-in delay-5">
+        <div class="skill-cat-title"><span class="skill-cat-icon">🎨</span><span data-i18n="cat_design_content">Design &amp; AI Tools</span></div>
+        <div class="skill-tags">
+          <span class="skill-tag">Canva</span>
+          <span class="skill-tag">CapCut</span>
+          <span class="skill-tag">Lightroom</span>
+          <span class="skill-tag">Video Editing</span>
+          <span class="skill-tag">Website Design</span>
+          <span class="skill-tag">Claude AI</span>
+          <span class="skill-tag">Pebblely</span>
+          <span class="skill-tag">Canva AI</span>
+          <span class="skill-tag">Gemini</span>
+          <span class="skill-tag">Flair.ai</span>
+          <span class="skill-tag">Midjourney</span>
+          <span class="skill-tag">Surfer SEO</span>
+          <span class="skill-tag">Jasper</span>
+        </div>
+      </div>
+
+      <div class="skill-category fade-in delay-6">
+        <div class="skill-cat-title"><span class="skill-cat-icon">🌍</span><span data-i18n="cat_languages">Languages</span></div>
+        <div class="skill-tags">
+          <span class="skill-tag">English (C2)</span>
+          <span class="skill-tag">Deutsch C1 (Goethe)</span>
+          <span class="skill-tag">Hindi</span>
+          <span class="skill-tag">Malayalam</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     EXPERIENCE
+══════════════════════════════════════════ -->
+<section id="experience" class="section">
+  <div class="container">
+    <h2 class="section-title fade-in" data-i18n="exp_title">Work <span>Experience</span></h2>
+    <p class="section-subtitle fade-in delay-1" data-i18n="exp_subtitle">A track record across industries and continents</p>
+
+    <div class="exp-timeline fade-in delay-1">
+
+      <!-- 1 · Nordic Hamburg Shipmanagement · open by default -->
+      <div class="exp-entry">
+        <div class="exp-date-row">
+          <span class="exp-date-text" data-i18n="exp1_date">May 2023 – Nov 2023</span>
+          <span class="timeline-tag" data-i18n="exp_tag_full">Full-time</span>
+        </div>
+        <div class="exp-role-text" data-i18n="exp1_role">Junior Marketing Project Manager</div>
+        <div class="exp-company-text">🚢 <span data-i18n="exp1_company">Nordic Hamburg Shipmanagement GmbH · Hamburg, Germany</span></div>
+      </div>
+
+      <!-- 2 · Phoenix Business & Legal Consultants -->
+      <div class="exp-entry">
+        <div class="exp-date-row">
+          <span class="exp-date-text" data-i18n="exp2_date">Feb 2021 – Jan 2022</span>
+          <span class="timeline-tag" data-i18n="exp_tag_full">Full-time</span>
+        </div>
+        <div class="exp-role-text" data-i18n="exp2_role">Junior Marketing Assistant</div>
+        <div class="exp-company-text">💼 <span data-i18n="exp2_company">Phoenix Business &amp; Legal Consultants · India</span></div>
+      </div>
+
+      <!-- 3 · IBN Hyan Chartered Accountants -->
+      <div class="exp-entry">
+        <div class="exp-date-row">
+          <span class="exp-date-text" data-i18n="exp3_date">Feb 2020 – Feb 2021</span>
+          <span class="timeline-tag" data-i18n="exp_tag_intern">Internship</span>
+        </div>
+        <div class="exp-role-text" data-i18n="exp3_role">Business Development Intern</div>
+        <div class="exp-company-text">📊 <span data-i18n="exp3_company">IBN Hyan Chartered Accountants · Oman</span></div>
+      </div>
+
+
+
+      <!-- 7 · Al Mazza Events -->
+      <div class="exp-entry">
+        <div class="exp-date-row">
+          <span class="exp-date-text" data-i18n="exp7_date">May 2017 – Aug 2017</span>
+          <span class="timeline-tag" data-i18n="exp_tag_intern">Internship</span>
+        </div>
+        <div class="exp-role-text" data-i18n="exp7_role">Assistant Event Manager</div>
+        <div class="exp-company-text">🎪 <span data-i18n="exp7_company">Al Mazza Events · Oman</span></div>
+      </div>
+
+      <!-- 8 · Asianet Satellite Communications -->
+      <div class="exp-entry">
+        <div class="exp-date-row">
+          <span class="exp-date-text" data-i18n="exp8_date">May 2016 – Jun 2016</span>
+          <span class="timeline-tag" data-i18n="exp_tag_intern">Internship</span>
+        </div>
+        <div class="exp-role-text" data-i18n="exp8_role">Assistant to the Editor</div>
+        <div class="exp-company-text">📡 <span data-i18n="exp8_company">Asianet Satellite Communications · Oman</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     OTHER ACTIVITIES & ROLES
+══════════════════════════════════════════ -->
+<section id="activities" class="section">
+  <div class="container">
+    <h2 class="section-title fade-in" data-i18n="act_title">Other <span>Activities & Roles</span></h2>
+    <p class="section-subtitle fade-in delay-1" data-i18n="act_subtitle">Beyond the CV — the roles that round out the picture</p>
+
+    <div class="activities-grid fade-in delay-2">
+
+      <div class="activity-card">
+        <div class="activity-role" data-i18n="act1_role">Retail Sales Assistant (Part-time)</div>
+        <div class="activity-org" data-i18n="act1_org">Hollister &amp; Co. · UK</div>
+        <div class="activity-date" data-i18n="act1_date">Apr 2019 – Dec 2019</div>
+        <button class="activity-toggle" onclick="toggleActivity(this)" data-i18n-show="act_show" data-i18n-hide="act_hide">Show more</button>
+        <div class="activity-desc">
+          <p data-i18n="act1_desc">Customer service, team coordination and stock/inventory management in a fast-paced retail environment.</p>
+        </div>
+      </div>
+
+      <div class="activity-card">
+        <div class="activity-role" data-i18n="act2_role">Coffee &amp; Operations — Customer Experience</div>
+        <div class="activity-org" data-i18n="act2_org">Espresso House · Hamburg</div>
+        <div class="activity-date" data-i18n="act2_date">2025 – Ongoing</div>
+        <button class="activity-toggle" onclick="toggleActivity(this)" data-i18n-show="act_show" data-i18n-hide="act_hide">Show more</button>
+        <div class="activity-desc">
+          <p data-i18n="act2_desc">An intentional and personal choice — driven by a love for coffee culture and a goal to explore opportunities in the coffee and hospitality industry, including a long-term vision of opening my own coffee bar. Gaining hands-on experience in customer service, inventory management, stock coordination, and daily operations while deepening German language fluency through real-world immersion.</p>
+        </div>
+      </div>
+
+      <div class="activity-card">
+        <div class="activity-role" data-i18n="act3_role">Event Manager (Volunteer)</div>
+        <div class="activity-org" data-i18n="act3_org">MEDIATRON Department Festival · UK</div>
+        <div class="activity-date" data-i18n="act3_date">2018 – 2019</div>
+        <button class="activity-toggle" onclick="toggleActivity(this)" data-i18n-show="act_show" data-i18n-hide="act_hide">Show more</button>
+        <div class="activity-desc">
+          <p data-i18n="act3_desc">Full event coordination including vendor management, scheduling, and on-site logistics for a university department festival.</p>
+        </div>
+      </div>
+
+      <div class="activity-card">
+        <div class="activity-role" data-i18n="act4_role">Orphanage Fundraising &amp; Campaigns (Volunteer)</div>
+        <div class="activity-org" data-i18n="act4_org">Bangalore, India</div>
+        <div class="activity-date" data-i18n="act4_date">2015 – 2018</div>
+        <button class="activity-toggle" onclick="toggleActivity(this)" data-i18n-show="act_show" data-i18n-hide="act_hide">Show more</button>
+        <div class="activity-desc">
+          <p data-i18n="act4_desc">Organised fundraising drives and awareness campaigns for local orphanages, managing everything from planning to on-ground execution.</p>
+        </div>
+      </div>
+
+      <div class="activity-card">
+        <div class="activity-role" data-i18n="act5_role">Global Young Leaders Conference</div>
+        <div class="activity-org" data-i18n="act5_org">USA</div>
+        <div class="activity-date" data-i18n="act5_date">Leadership</div>
+        <button class="activity-toggle" onclick="toggleActivity(this)" data-i18n-show="act_show" data-i18n-hide="act_hide">Show more</button>
+        <div class="activity-desc">
+          <p data-i18n="act5_desc">Leadership training programme representing India and Oman on an international stage.</p>
+        </div>
+      </div>
+
+      <div class="activity-card">
+        <div class="activity-role" data-i18n="act6_role">Vibe Coding &amp; AI-Assisted Development (Self-directed)</div>
+        <div class="activity-org" data-i18n="act6_org">Independent</div>
+        <div class="activity-date" data-i18n="act6_date">2025 – Ongoing</div>
+        <button class="activity-toggle" onclick="toggleActivity(this)" data-i18n-show="act_show" data-i18n-hide="act_hide">Show more</button>
+        <div class="activity-desc">
+          <p data-i18n="act6_desc">Building real projects using AI tools including Claude Code — including this very portfolio website. Learning to collaborate with AI to design, develop and iterate on web projects without a traditional coding background. Proof that curiosity and the right tools can build anything.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     PROJECTS
+══════════════════════════════════════════ -->
+<section id="projects" class="section">
+  <div class="container">
+    <h2 class="section-title fade-in" data-i18n="proj_title">My <span>Projects</span></h2>
+    <p class="section-subtitle fade-in delay-1" data-i18n="proj_subtitle">Hover or tap a card to flip it</p>
+
+    <div class="projects-grid">
+      <div class="flip-card fade-in delay-1" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <div class="flip-project-icon">🌈</div>
+            <div class="flip-project-title" data-i18n="proj1_title">Hues of Hamburg</div>
+            <div class="flip-project-tag" data-i18n="proj1_tag">E-Commerce</div>
+            <div class="flip-hint" data-i18n="flip_hint">Tap to learn more</div>
+          </div>
+          <div class="flip-back">
+            <h3 data-i18n="proj1_title">Hues of Hamburg</h3>
+            <p data-i18n="proj1_desc">A curated product brand launching from Hamburg. Currently in stealth — watch this space.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card fade-in delay-2" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <div class="flip-project-icon">💡</div>
+            <div class="flip-project-title" data-i18n="proj2_title">Freelance Client</div>
+            <div class="flip-project-tag" data-i18n="proj2_tag">Digital Marketing &amp; Strategy</div>
+            <div class="flip-hint" data-i18n="flip_hint">Tap to learn more</div>
+          </div>
+          <div class="flip-back">
+            <h3 data-i18n="proj2_title">Freelance Client</h3>
+            <p data-i18n="proj2_desc">End-to-end digital marketing support for a private client — content strategy, campaign management, and brand growth.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card fade-in delay-3" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <div class="flip-project-icon">📚</div>
+            <div class="flip-project-title" data-i18n="proj3_title">Independent Publishing</div>
+            <div class="flip-project-tag" data-i18n="proj3_tag">Independent Publishing &amp; Product Design</div>
+            <div class="flip-hint" data-i18n="flip_hint">Tap to learn more</div>
+          </div>
+          <div class="flip-back">
+            <h3 data-i18n="proj3_title">Independent Publishing</h3>
+            <p data-i18n="proj3_desc">Conceptualised, designed and brought to market an original range of stationery products — managing everything from product design and visual identity to pricing strategy and online distribution. A solo end-to-end product launch.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card fade-in delay-4" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <div class="flip-project-icon">🎬</div>
+            <div class="flip-project-title" data-i18n="proj4_title">Short Film — CLICK</div>
+            <div class="flip-project-tag" data-i18n="proj4_tag">Film &amp; Creative Direction</div>
+            <div class="flip-hint" data-i18n="flip_hint">Tap to learn more</div>
+          </div>
+          <div class="flip-back">
+            <h3 data-i18n="proj4_title">Short Film — CLICK</h3>
+            <p data-i18n="proj4_desc">Part of a short film project tackling a social issue. Roles included filming, video editing, and shortlisting the cast.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card fade-in delay-5" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <div class="flip-project-icon">📰</div>
+            <div class="flip-project-title" data-i18n="proj5_title">News Tabloid — News Pitcher</div>
+            <div class="flip-project-tag" data-i18n="proj5_tag">Content &amp; Publishing</div>
+            <div class="flip-hint" data-i18n="flip_hint">Tap to learn more</div>
+          </div>
+          <div class="flip-back">
+            <h3 data-i18n="proj5_title">News Tabloid — News Pitcher</h3>
+            <p data-i18n="proj5_desc">Created a college tabloid 'News Pitcher' — responsible for content curation, copy editing, and layout design. New volumes published every month as part of the project.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     CERTIFICATIONS
+══════════════════════════════════════════ -->
+<section id="certifications" class="section">
+  <div class="container">
+    <h2 class="section-title fade-in" data-i18n="cert_title">Certifications <span>&amp; Credentials</span></h2>
+    <p class="section-subtitle fade-in delay-1" data-i18n="cert_subtitle">Continuously upskilling and staying ahead</p>
+
+    <div class="cert-grid">
+      <!-- Scrum.org PSM-I: navy shield with white S -->
+      <div class="cert-badge fade-in delay-1">
+        <div class="cert-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-label="Scrum.org">
+            <path d="M20 3L36 9v14c0 8.5-7 14.5-16 17C11 37.5 4 31.5 4 23V9z" fill="#17375E"/>
+            <text x="20" y="28" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" font-weight="bold" fill="white">S</text>
+          </svg>
+        </div>
+        <div class="cert-info">
+          <h4 data-i18n="cert1_name">Professional Scrum Master PSM-I</h4>
+          <p>Scrum.org</p>
+          <span class="cert-status complete" data-i18n="cert_complete">✅ Completed</span>
+        </div>
+      </div>
+
+      <!-- Google Analytics GA4: orange/yellow flame -->
+      <div class="cert-badge fade-in delay-2">
+        <div class="cert-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-label="Google Analytics">
+            <path d="M20 3c0 0-12 11-12 18.5C8 29.5 13.5 36 20 37.5c6.5-1.5 12-8 12-16C32 14 20 3 20 3z" fill="#E37400"/>
+            <path d="M20 13.5c0 0-6.5 6.5-6.5 11C13.5 29 16.5 32 20 33.5c3.5-1.5 6.5-4.5 6.5-9C26.5 20 20 13.5 20 13.5z" fill="#FABC04"/>
+          </svg>
+        </div>
+        <div class="cert-info">
+          <h4 data-i18n="cert2_name">Google Analytics GA4</h4>
+          <p>Google</p>
+          <span class="cert-status complete" data-i18n="cert_complete">✅ Completed</span>
+        </div>
+      </div>
+
+      <!-- Digital Marketing: Google G in four brand colours
+           Ring built with four stroke-dasharray circle arcs, gap at 3 o'clock.
+           C = 2π×13 ≈ 81.68. Segments clockwise from 12° past the gap:
+           Blue 196° (44.4u), Green 88° (20.0u), Yellow 26° (5.9u), Red 26° (5.9u), gap 24° (5.5u). -->
+      <div class="cert-badge fade-in delay-3">
+        <div class="cert-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-label="Google">
+            <circle cx="20" cy="20" r="19" fill="white" stroke="#e8e8e8" stroke-width="0.5"/>
+            <circle cx="20" cy="20" r="13" fill="none" stroke="#4285F4" stroke-width="5" stroke-dasharray="44.4 37.3" stroke-dashoffset="79.0"/>
+            <circle cx="20" cy="20" r="13" fill="none" stroke="#34A853" stroke-width="5" stroke-dasharray="20.0 61.7" stroke-dashoffset="34.5"/>
+            <circle cx="20" cy="20" r="13" fill="none" stroke="#FBBC05" stroke-width="5" stroke-dasharray="5.9 75.8" stroke-dashoffset="14.6"/>
+            <circle cx="20" cy="20" r="13" fill="none" stroke="#EA4335" stroke-width="5" stroke-dasharray="5.9 75.8" stroke-dashoffset="8.7"/>
+            <circle cx="20" cy="20" r="10.5" fill="white"/>
+            <rect x="20" y="17" width="15.5" height="6" fill="#4285F4"/>
+          </svg>
+        </div>
+        <div class="cert-info">
+          <h4 data-i18n="cert3_name">Digital Marketing Certification</h4>
+          <p>&nbsp;</p>
+          <span class="cert-status complete" data-i18n="cert_complete">✅ Completed</span>
+        </div>
+      </div>
+
+      <!-- Amazon: black lowercase a + orange arrow-smile -->
+      <div class="cert-badge fade-in delay-4">
+        <div class="cert-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-label="Amazon">
+            <text x="20" y="25" text-anchor="middle" font-family="Arial,sans-serif" font-size="23" font-weight="bold" fill="#111111">a</text>
+            <path d="M9 31 Q20 39 32 31" stroke="#FF9900" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <polygon points="30,29 33.5,31.5 29,33" fill="#FF9900"/>
+          </svg>
+        </div>
+        <div class="cert-info">
+          <h4 data-i18n="cert4_name">Amazon Sponsored Ads Certification</h4>
+          <p>Amazon</p>
+          <span class="cert-status complete" data-i18n="cert_complete">✅ Completed</span>
+        </div>
+      </div>
+
+      <!-- TELC: red rectangle with white telc wordmark -->
+      <div class="cert-badge fade-in delay-5">
+        <div class="cert-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-label="TELC">
+            <rect x="2" y="10" width="36" height="20" rx="3" fill="#C8102E"/>
+            <text x="20" y="25" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="white">telc</text>
+          </svg>
+        </div>
+        <div class="cert-info">
+          <h4 data-i18n="cert5_name">German B2 Berufliche Deutsch</h4>
+          <p>TELC</p>
+          <span class="cert-status complete" data-i18n="cert_complete">✅ Completed</span>
+        </div>
+      </div>
+
+      <!-- IBM: bold IBM text in IBM blue with horizontal white stripe cuts -->
+      <div class="cert-badge fade-in delay-6">
+        <div class="cert-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-label="IBM">
+            <text x="20" y="27" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif" font-size="18" font-weight="900" fill="#006699">IBM</text>
+            <rect x="0" y="15.5" width="40" height="2.8" fill="white"/>
+            <rect x="0" y="20.2" width="40" height="2.8" fill="white"/>
+            <rect x="0" y="24.8" width="40" height="2.8" fill="white"/>
+          </svg>
+        </div>
+        <div class="cert-info">
+          <h4 data-i18n="cert6_name">Project Management</h4>
+          <p>IBM</p>
+          <span class="cert-status complete" data-i18n="cert_complete">✅ Completed</span>
+        </div>
+      </div>
+
+      <!-- Goethe-Institut: green rectangle with white Goethe wordmark -->
+      <div class="cert-badge fade-in delay-1">
+        <div class="cert-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-label="Goethe-Institut">
+            <rect x="1" y="9" width="38" height="22" rx="3" fill="#4CAF50"/>
+            <text x="20" y="24" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" font-weight="bold" fill="white">Goethe</text>
+          </svg>
+        </div>
+        <div class="cert-info">
+          <h4 data-i18n="cert7_name">Goethe C1 German — Speaking</h4>
+          <p>Goethe-Institut</p>
+          <span class="cert-status complete" data-i18n="cert7_speaking">✅ Speaking: Passed</span>
+          <br/>
+          <span class="cert-status progress" data-i18n="cert7_written">⏳ Written: In Progress</span>
+        </div>
+      </div>
+      <!-- HR Certification: two person silhouettes in gray -->
+      <div class="cert-badge fade-in delay-2">
+        <div class="cert-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-label="HR Certification">
+            <circle cx="14" cy="13" r="5" fill="#888"/>
+            <path d="M4 32c0-6 4.5-10 10-10s10 4 10 10" fill="#888"/>
+            <circle cx="27" cy="13" r="4" fill="#aaa"/>
+            <path d="M19 32c0-5 3.5-8.5 8-8.5s8 3.5 8 8.5" fill="#aaa"/>
+          </svg>
+        </div>
+        <div class="cert-info">
+          <h4 data-i18n="cert8_name">HR Certification</h4>
+          <p>&nbsp;</p>
+          <span class="cert-status complete" data-i18n="cert_complete">✅ Completed</span>
+        </div>
+      </div>
+
+      <!-- Apple Search Ads: black apple shape -->
+      <div class="cert-badge fade-in delay-3">
+        <div class="cert-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-label="Apple">
+            <path d="M28.5 21.2c0-4.2 3.4-6.2 3.6-6.4-2-2.9-5-3.3-6.1-3.3-2.6-.3-5 1.5-6.3 1.5-1.3 0-3.3-1.5-5.5-1.4-2.8 0-5.4 1.6-6.8 4.1-2.9 5.1-.8 12.6 2.1 16.7 1.4 2 3 4.2 5.2 4.1 2.1-.1 2.9-1.3 5.4-1.3s3.2 1.3 5.4 1.3c2.2 0 3.6-2 5-4 1.6-2.3 2.2-4.6 2.2-4.7-.1 0-4.2-1.6-4.2-6.6z" fill="#111"/>
+            <path d="M24.2 8.5c1.1-1.4 1.9-3.3 1.7-5.2-1.6.1-3.6 1.1-4.8 2.5-1 1.2-1.9 3.1-1.7 4.9 1.8.1 3.7-.9 4.8-2.2z" fill="#111"/>
+          </svg>
+        </div>
+        <div class="cert-info">
+          <h4 data-i18n="cert9_name">Apple Search Ads Certification</h4>
+          <p>Apple</p>
+          <span class="cert-status complete" data-i18n="cert_complete">✅ Completed</span>
+        </div>
+      </div>
+
+      <!-- PMI: navy text badge -->
+      <div class="cert-badge fade-in delay-4">
+        <div class="cert-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-label="PMI">
+            <rect x="2" y="10" width="36" height="20" rx="3" fill="#003087"/>
+            <text x="20" y="25" text-anchor="middle" font-family="'Arial Black',Arial,sans-serif" font-size="14" font-weight="900" fill="white">PMI</text>
+          </svg>
+        </div>
+        <div class="cert-info">
+          <h4 data-i18n="cert10_name">Generative AI for Project Managers</h4>
+          <p>PMI</p>
+          <span class="cert-status complete" data-i18n="cert_complete">✅ Completed</span>
+        </div>
+      </div>
+
+      <!-- Canva: purple circle with white "Ca" -->
+      <div class="cert-badge fade-in delay-5">
+        <div class="cert-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-label="Canva">
+            <circle cx="20" cy="20" r="18" fill="#7D2AE8"/>
+            <text x="20" y="26" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="white">Ca</text>
+          </svg>
+        </div>
+        <div class="cert-info">
+          <h4 data-i18n="cert11_name">Marketing with Canva</h4>
+          <p>Canva</p>
+          <span class="cert-status complete" data-i18n="cert_complete">✅ Completed</span>
+        </div>
+      </div>
+
+      <!-- IELTS: blue rectangle with white IELTS text -->
+      <div class="cert-badge fade-in delay-6">
+        <div class="cert-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-label="IELTS">
+            <rect x="2" y="10" width="36" height="20" rx="3" fill="#003DA5"/>
+            <text x="20" y="25" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" font-weight="bold" fill="white">IELTS</text>
+          </svg>
+        </div>
+        <div class="cert-info">
+          <h4 data-i18n="cert12_name">IELTS</h4>
+          <p>British Council</p>
+          <span class="cert-status complete" data-i18n="cert_complete">✅ Completed</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     BLOG
+══════════════════════════════════════════ -->
+<section id="blog" class="section">
+  <div class="container">
+    <h2 class="section-title fade-in" data-i18n="blog_title">Thoughts &amp; <span>Insights</span></h2>
+    <p class="section-subtitle fade-in delay-1" data-i18n="blog_subtitle">Marketing, career, life in Germany, and everything in between.</p>
+    <div style="text-align:center;" class="fade-in delay-2">
+      <a href="blog.html" class="blog-cta-btn" data-i18n="blog_cta">Read the Blog →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     CONTACT
+══════════════════════════════════════════ -->
+<section id="contact" class="section">
+  <div class="container">
+    <h2 class="section-title fade-in" data-i18n="contact_title">Get in <span>Touch</span></h2>
+    <p class="section-subtitle fade-in delay-1" data-i18n="contact_subtitle">Open to opportunities, collaborations, and conversations</p>
+
+    <div class="contact-grid">
+      <div class="contact-info fade-in-left">
+        <h3 data-i18n="contact_heading">Let's <span>Connect</span></h3>
+        <p data-i18n="contact_desc">Whether you have a project in mind, a role to discuss, or simply want to say hello — I'd love to hear from you. Based in Hamburg, open to remote and hybrid opportunities across Europe.</p>
+
+        <div class="contact-links">
+          <a href="https://www.linkedin.com/in/sneha80" target="_blank" class="contact-link-item">
+            <span class="link-icon">💼</span>
+            <span>linkedin.com/in/sneha80</span>
+          </a>
+          <a href="mailto:snehababu0804@hotmail.com" class="contact-link-item">
+            <span class="link-icon">✉️</span>
+            <span>snehababu0804@hotmail.com</span>
+          </a>
+          <div class="contact-link-item">
+            <span class="link-icon">📍</span>
+            <span data-i18n="contact_location">Hamburg, Germany</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fade-in-right">
+        <form id="contactForm" onsubmit="handleContactSubmit(event)">
+          <div class="form-group">
+            <label for="c_name" data-i18n="form_name">Name</label>
+            <input type="text" id="c_name" name="name" required placeholder="Your name" data-i18n-placeholder="ph_name" />
+          </div>
+          <div class="form-group">
+            <label for="c_email" data-i18n="form_email">Email</label>
+            <input type="email" id="c_email" name="email" required placeholder="your@email.com" />
+          </div>
+          <div class="form-group">
+            <label for="c_subject" data-i18n="form_subject">Subject</label>
+            <input type="text" id="c_subject" name="subject" required placeholder="What's this about?" data-i18n-placeholder="ph_subject" />
+          </div>
+          <div class="form-group">
+            <label for="c_message" data-i18n="form_message">Message</label>
+            <textarea id="c_message" name="message" required placeholder="Your message..." data-i18n-placeholder="ph_message"></textarea>
+          </div>
+          <button type="submit" class="btn-coral" data-i18n="form_send">Send Message</button>
+        </form>
+        <div class="form-success" id="contactSuccess">
+          <div class="success-icon">🎉</div>
+          <h4 data-i18n="success_title">Message sent!</h4>
+          <p data-i18n="success_desc">Thanks for reaching out. I'll get back to you soon.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cv-request-section fade-in">
+      <p data-i18n="cv_text">Interested in my full work history and qualifications?</p>
+      <button class="btn-primary" onclick="openModal('cvModal')" data-i18n="cv_btn">Request My CV</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer>
+  <p data-i18n="footer_text">Built with curiosity and <a href="https://claude.ai/code" target="_blank">Claude Code</a> · snehababu.eu</p>
+</footer>
+
+<!-- ══════════════════════════════════════════
+     CV MODAL
+══════════════════════════════════════════ -->
+<div class="modal-overlay" id="cvModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('cvModal')">✕</button>
+    <h3 data-i18n="modal_title">Request CV</h3>
+    <p data-i18n="modal_desc">I'll send my CV to your email within 24 hours.</p>
+    <form id="cvForm" onsubmit="handleCvSubmit(event)">
+      <div class="form-group">
+        <label for="cv_name" data-i18n="form_name">Name</label>
+        <input type="text" id="cv_name" required placeholder="Your name" data-i18n-placeholder="ph_name" />
+      </div>
+      <div class="form-group">
+        <label for="cv_email" data-i18n="form_email">Email</label>
+        <input type="email" id="cv_email" required placeholder="your@email.com" />
+      </div>
+      <div class="form-group">
+        <label for="cv_company" data-i18n="form_company">Company (optional)</label>
+        <input type="text" id="cv_company" placeholder="Your company" data-i18n-placeholder="ph_company" />
+      </div>
+      <div class="form-group">
+        <label for="cv_reason" data-i18n="form_reason">Reason for interest</label>
+        <textarea id="cv_reason" style="height:80px" placeholder="Tell me a bit about the role or context..." data-i18n-placeholder="ph_reason"></textarea>
+      </div>
+      <button type="submit" class="btn-coral" data-i18n="modal_send">Send Request</button>
+    </form>
+    <div class="form-success" id="cvSuccess">
+      <div class="success-icon">✅</div>
+      <h4 data-i18n="cv_success_title">Request received!</h4>
+      <p data-i18n="cv_success_desc">I'll send my CV to your inbox within 24 hours.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SCRIPTS
+══════════════════════════════════════════ -->
+<script>
+/* ═══════════════════════════════════════
+   BLOB ANIMATION — MOUSE INTERACTION
+   Each blob-shell's position is driven by JS (mouse tracking via lerp).
+   The inner .blob element runs its own CSS drift keyframe independently.
+   Both transforms compose: shell moves the cluster, blob drifts within it.
+═══════════════════════════════════════ */
+(function () {
+  // Config: factor controls direction & amplitude of mouse influence (px per 0.5 normalised units).
+  // Positive = drifts toward cursor, negative = drifts away.
+  const config = [
+    { selector: '.blob-shell-1', factor:  0.06, speed: 0.022 },
+    { selector: '.blob-shell-2', factor: -0.04, speed: 0.018 },
+    { selector: '.blob-shell-3', factor:  0.03, speed: 0.016 },
+    { selector: '.blob-shell-4', factor: -0.07, speed: 0.028 },
+    { selector: '.blob-shell-5', factor:  0.05, speed: 0.020 },
+    { selector: '.blob-shell-6', factor: -0.035, speed: 0.024 },
+  ];
+
+  const blobs = config.map(c => ({
+    el: document.querySelector(c.selector),
+    factor: c.factor,
+    speed: c.speed,
+    cx: 0, cy: 0,  // current (lerped) offsets
+  }));
+
+  // Normalised mouse position: -0.5 … 0.5 relative to viewport centre
+  let mx = 0, my = 0;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX / window.innerWidth  - 0.5;
+    my = e.clientY / window.innerHeight - 0.5;
+  });
+
+  // Touch support for mobile
+  document.addEventListener('touchmove', e => {
+    const t = e.touches[0];
+    mx = t.clientX / window.innerWidth  - 0.5;
+    my = t.clientY / window.innerHeight - 0.5;
+  }, { passive: true });
+
+  function tick() {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    blobs.forEach(b => {
+      const tx = mx * b.factor * w;
+      const ty = my * b.factor * h;
+      // Lerp toward target
+      b.cx += (tx - b.cx) * b.speed;
+      b.cy += (ty - b.cy) * b.speed;
+      // Apply as a transform on the shell — does not interfere with the
+      // inner blob's CSS keyframe animation which runs on a child element.
+      b.el.style.transform = `translate(${b.cx.toFixed(2)}px, ${b.cy.toFixed(2)}px)`;
+    });
+    requestAnimationFrame(tick);
+  }
+  tick();
+}());
+
+/* ═══════════════════════════════════════
+   TYPEWRITER EFFECT
+═══════════════════════════════════════ */
+const phrases = {
+  en: ['Project Manager', 'Digital Marketing Manager', 'Brand Strategist', 'Scrum Master', 'Operations Manager', 'Project Coordinator', 'AI-Savvy Professional'],
+  de: ['Projektmanagerin', 'Digital Marketing Managerin', 'Brand Strategin', 'Scrum Master', 'Operations Managerin', 'Projektkoordinatorin', 'KI-affine Fachkraft']
+};
+
+let currentLang = 'en';
+let phraseIdx = 0;
+let charIdx = 0;
+let deleting = false;
+const typeEl = document.getElementById('typewriter-text');
+
+function type() {
+  const list = phrases[currentLang];
+  const word = list[phraseIdx];
+
+  if (!deleting) {
+    typeEl.textContent = word.substring(0, charIdx + 1);
+    charIdx++;
+    if (charIdx === word.length) {
+      deleting = true;
+      setTimeout(type, 1800);
+      return;
+    }
+  } else {
+    typeEl.textContent = word.substring(0, charIdx - 1);
+    charIdx--;
+    if (charIdx === 0) {
+      deleting = false;
+      phraseIdx = (phraseIdx + 1) % list.length;
+    }
+  }
+  setTimeout(type, deleting ? 60 : 100);
+}
+type();
+
+/* ═══════════════════════════════════════
+   NAVBAR SCROLL
+═══════════════════════════════════════ */
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+/* ═══════════════════════════════════════
+   SCROLL-TRIGGERED FADE-INS
+═══════════════════════════════════════ */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => observer.observe(el));
+
+/* ═══════════════════════════════════════
+   MOBILE NAV
+═══════════════════════════════════════ */
+function toggleMobileNav() {
+  const nav = document.getElementById('mobileNav');
+  const overlay = document.getElementById('mobileNavOverlay');
+  const ham = document.getElementById('hamburger');
+  nav.classList.toggle('open');
+  overlay.classList.toggle('open');
+  ham.classList.toggle('open');
+}
+
+/* ═══════════════════════════════════════
+   MODAL
+═══════════════════════════════════════ */
+function openModal(id) {
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeModal(overlay.id);
+  });
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(m => closeModal(m.id));
+  }
+});
+
+/* ═══════════════════════════════════════
+   FORM HANDLERS
+═══════════════════════════════════════ */
+function handleContactSubmit(e) {
+  e.preventDefault();
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('contactSuccess').style.display = 'block';
+}
+
+function handleCvSubmit(e) {
+  e.preventDefault();
+  document.getElementById('cvForm').style.display = 'none';
+  document.getElementById('cvSuccess').style.display = 'block';
+  setTimeout(() => closeModal('cvModal'), 2800);
+}
+
+/* ═══════════════════════════════════════
+   BLOG FILTER
+═══════════════════════════════════════ */
+function toggleExpEntry(btn) {
+  const entry = btn.closest('.exp-entry');
+  const isOpen = entry.classList.toggle('open');
+  const lang = typeof currentLang !== 'undefined' ? currentLang : 'en';
+  btn.textContent = isOpen
+    ? (lang === 'de' ? 'Details ausblenden' : 'Hide details')
+    : (lang === 'de' ? 'Details anzeigen' : 'Show details');
+}
+
+function toggleActivity(btn) {
+  const card = btn.closest('.activity-card');
+  const isOpen = card.classList.toggle('open');
+  const lang = typeof currentLang !== 'undefined' ? currentLang : 'en';
+  btn.textContent = isOpen
+    ? (lang === 'de' ? 'Weniger anzeigen' : 'Show less')
+    : (lang === 'de' ? 'Mehr anzeigen' : 'Show more');
+}
+
+function filterBlog(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.blog-card').forEach(card => {
+    if (cat === 'all' || card.dataset.category === cat) {
+      card.classList.remove('hidden');
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+}
+
+/* ═══════════════════════════════════════
+   LANGUAGE TOGGLE — TRANSLATIONS
+═══════════════════════════════════════ */
+const translations = {
+  en: {
+    nav_about: 'About',
+    nav_skills: 'Skills',
+    nav_experience: 'Experience',
+    nav_projects: 'Projects',
+    nav_certs: 'Certifications',
+    nav_blog: 'Blog',
+    nav_contact: 'Contact',
+
+    hero_tagline: 'Globally experienced. Hamburg-based. Ready to make an impact.',
+    hero_cta1: 'Get in Touch',
+    hero_cta2: 'Request CV',
+
+    about_title: 'About',
+    about_title_span: 'Me',
+    about_subtitle: 'A cross-cultural story with a Hamburg chapter',
+    about_heading: 'Shaped by Many Worlds',
+    about_p1: 'Hi, I\'m someone who doesn\'t just work across industries—I live across them. With a BA in Media, Communication, and Business Psychology from Bangalore University and an MBA in International Business from Birmingham City University, my career has been shaped by a love for understanding what makes people tick. My journey has taken me from Oman and India to the UK and Germany, turning me into a cultural chameleon who can adapt to just about any environment.',
+    about_p2: 'Professionally, I\'ve spent over three years blending the creative world of marketing (think SEO, social media, Google Ads, and content creation) with the structured world of project management and operations. But I don\'t stop there. I have a massive curiosity for how things move and connect, which draws me toward the tech, IT, and logistics sectors too.',
+    about_p3: 'At my core, I am a listener first and a strategist second. My cross-cultural adventures have made me deeply empathetic, highly adaptive, and a bit of a perfectionist when it comes to the details. I\'m also a big believer in working smarter, regularly teaming up with AI tools to supercharge my creativity and keep projects running flawlessly. Whether I\'m designing an email campaign, mapping out operational workflows, or mastering my next German conversation (C1 is in the works!), I bring a global perspective and a lot of heart to everything I do.',
+    hobbies_label: 'A little about me beyond work',
+    vol_title: 'Volunteer & Community',
+    vol1: 'ASB Community Volunteer — Altersheim Hamburg (2025–present)',
+    vol2: 'Kantorei Hamburg Choir Member (2024–2025)',
+    vol3: 'Orphanage Fundraising Campaigns, Bangalore (2015–2018)',
+
+    skills_title: 'My',
+    skills_subtitle: 'Tools, platforms, and superpowers I bring to the table',
+    cat_marketing: 'Marketing',
+    cat_pm: 'Project Management',
+    cat_interpersonal: 'Interpersonal Skills',
+    cat_design_content: 'Design & AI Tools',
+    cat_languages: 'Languages',
+    cat_learning: 'Currently Learning',
+
+    exp_title: 'Work',
+    exp_subtitle: 'A track record across industries and continents',
+    exp_tag_full: 'Full-time',
+    exp_tag_intern: 'Internship',
+    exp_tag_parttime: 'Part-time',
+    exp_tag_vol: 'Volunteer',
+    exp_tag_leader: 'Leadership',
+    exp1_date: 'May 2023 – Nov 2023',
+    exp1_role: 'Junior Marketing Project Manager',
+    exp1_company: 'Nordic Hamburg Shipmanagement GmbH · Hamburg, Germany',
+    exp1_a1: 'Coordinated international expedition partners including Quark, Heritage, and Poseidon.',
+    exp1_a2: 'Managed email campaigns for 2,000+ subscribers, achieving a 32% open rate.',
+    exp1_a3: 'Generated 185 high-value bookings in under 6 months.',
+    exp1_a4: 'Led multi-stakeholder marketing campaigns end-to-end using Jira.',
+    exp2_date: 'Feb 2021 – Jan 2022',
+    exp2_role: 'Junior Marketing Assistant',
+    exp2_company: 'Phoenix Business & Legal Consultants · India',
+    exp2_a1: 'Ran Google Ads and SEO campaigns that increased website traffic by 50%+.',
+    exp2_a2: 'Introduced an agile workflow system, reducing team blockers by 70%.',
+    exp3_date: 'Feb 2020 – Feb 2021',
+    exp3_role: 'Business Development Intern',
+    exp3_company: 'IBN Hyan Chartered Accountants · Oman',
+    exp3_a1: 'Market research, client acquisition support.',
+    exp3_a2: 'Social media management and company website updates.',
+    exp4_date: '2025 (ongoing)',
+    exp4_role: 'Coffee & Operations — Customer Experience',
+    exp4_company: 'Espresso House · Hamburg, Germany',
+    exp4_a1: 'An intentional and personal choice — driven by a love for coffee culture and a goal to explore opportunities in the coffee and hospitality industry, including a long-term vision of opening my own coffee bar. Gaining hands-on experience in customer service, inventory management, stock coordination, and daily operations while deepening German language fluency through real-world immersion in a fast-paced environment.',
+    exp5_date: '2018 – 2019',
+    exp5_role: 'Event Manager',
+    exp5_company: 'MEDIATRON Department Festival · UK',
+    exp5_a1: 'Full event coordination from concept to delivery.',
+    exp5_a2: 'Vendor management and on-site logistics for department festival.',
+    exp7_date: 'May 2017 – Aug 2017',
+    exp7_role: 'Assistant Event Manager',
+    exp7_company: 'Al Mazza Events · Oman',
+    exp8_date: 'May 2016 – Jun 2016',
+    exp8_role: 'Assistant to the Editor',
+    exp8_company: 'Asianet Satellite Communications · Oman',
+    exp6_date: 'USA',
+    exp6_role: 'Global Young Leaders Conference',
+    exp6_company: 'Represented India & Oman',
+    exp6_a1: 'Leadership training and international representation.',
+
+    act_title: 'Other',
+    act_subtitle: 'Beyond the CV — the roles that round out the picture',
+    act_show: 'Show more',
+    act_hide: 'Show less',
+    act1_role: 'Retail Sales Assistant (Part-time)',
+    act1_org: 'Hollister & Co. · UK',
+    act1_date: 'Apr 2019 – Dec 2019',
+    act1_desc: 'Customer service, team coordination and stock/inventory management in a fast-paced retail environment.',
+    act2_role: 'Coffee & Operations — Customer Experience',
+    act2_org: 'Espresso House · Hamburg',
+    act2_date: '2025 – Ongoing',
+    act2_desc: 'An intentional and personal choice — driven by a love for coffee culture and a goal to explore opportunities in the coffee and hospitality industry, including a long-term vision of opening my own coffee bar. Gaining hands-on experience in customer service, inventory management, stock coordination, and daily operations while deepening German language fluency through real-world immersion.',
+    act3_role: 'Event Manager (Volunteer)',
+    act3_org: 'MEDIATRON Department Festival · UK',
+    act3_date: '2018 – 2019',
+    act3_desc: 'Full event coordination including vendor management, scheduling, and on-site logistics for a university department festival.',
+    act4_role: 'Orphanage Fundraising & Campaigns (Volunteer)',
+    act4_org: 'Bangalore, India',
+    act4_date: '2015 – 2018',
+    act4_desc: 'Organised fundraising drives and awareness campaigns for local orphanages, managing everything from planning to on-ground execution.',
+    act5_role: 'Global Young Leaders Conference',
+    act5_org: 'USA',
+    act5_date: 'Leadership',
+    act5_desc: 'Leadership training programme representing India and Oman on an international stage.',
+    act6_role: 'Vibe Coding & AI-Assisted Development (Self-directed)',
+    act6_org: 'Independent',
+    act6_date: '2025 – Ongoing',
+    act6_desc: 'Building real projects using AI tools including Claude Code — including this very portfolio website. Learning to collaborate with AI to design, develop and iterate on web projects without a traditional coding background. Proof that curiosity and the right tools can build anything.',
+    proj_title: 'My',
+    proj_subtitle: 'Hover or tap a card to flip it',
+    proj1_title: 'Hues of Hamburg',
+    proj1_tag: 'E-Commerce',
+    proj1_desc: 'A curated product brand launching from Hamburg. Currently in stealth — watch this space.',
+    proj2_title: 'Freelance Client',
+    proj2_tag: 'Digital Marketing & Strategy',
+    proj2_desc: 'End-to-end digital marketing support for a private client — content strategy, campaign management, and brand growth.',
+    proj3_title: 'Independent Publishing',
+    proj3_tag: 'Independent Publishing & Product Design',
+    proj3_desc: 'Conceptualised, designed and brought to market an original range of stationery products — managing everything from product design and visual identity to pricing strategy and online distribution. A solo end-to-end product launch.',
+    proj4_title: 'Short Film — CLICK',
+    proj4_tag: 'Film & Creative Direction',
+    proj4_desc: 'Part of a short film project tackling a social issue. Roles included filming, video editing, and shortlisting the cast.',
+    proj5_title: 'News Tabloid — News Pitcher',
+    proj5_tag: 'Content & Publishing',
+    proj5_desc: 'Created a college tabloid \'News Pitcher\' — responsible for content curation, copy editing, and layout design. New volumes published every month as part of the project.',
+    flip_hint: 'Tap to learn more',
+
+    cert_title: 'Certifications',
+    cert_subtitle: 'Continuously upskilling and staying ahead',
+    cert_complete: '✅ Completed',
+    cert1_name: 'Professional Scrum Master PSM-I',
+    cert2_name: 'Google Analytics GA4',
+    cert3_name: 'Digital Marketing Certification',
+    cert4_name: 'Amazon Sponsored Ads Certification',
+    cert5_name: 'German B2 Berufliche Deutsch',
+    cert6_name: 'Project Management',
+    cert7_name: 'Goethe C1 German — Speaking',
+    cert7_speaking: '✅ Speaking: Passed',
+    cert7_written: '⏳ Written: In Progress',
+    cert8_name: 'HR Certification',
+    cert9_name: 'Apple Search Ads Certification',
+    cert10_name: 'Generative AI for Project Managers',
+    cert11_name: 'Marketing with Canva',
+    cert12_name: 'IELTS',
+
+    blog_title: 'Thoughts &',
+    blog_subtitle: 'Marketing, career, life in Germany, and everything in between.',
+    blog_cta: 'Read the Blog →',
+
+    contact_title: 'Get in',
+    contact_subtitle: 'Open to opportunities, collaborations, and conversations',
+    contact_heading: 'Let\'s Connect',
+    contact_desc: 'Whether you have a project in mind, a role to discuss, or simply want to say hello — I\'d love to hear from you. Based in Hamburg, open to remote and hybrid opportunities across Europe.',
+    contact_location: 'Hamburg, Germany',
+    form_name: 'Name',
+    form_email: 'Email',
+    form_subject: 'Subject',
+    form_message: 'Message',
+    form_company: 'Company (optional)',
+    form_reason: 'Reason for interest',
+    form_send: 'Send Message',
+    ph_name: 'Your name',
+    ph_subject: 'What\'s this about?',
+    ph_message: 'Your message...',
+    ph_company: 'Your company',
+    ph_reason: 'Tell me a bit about the role or context...',
+    success_title: 'Message sent!',
+    success_desc: 'Thanks for reaching out. I\'ll get back to you soon.',
+    cv_text: 'Interested in my full work history and qualifications?',
+    cv_btn: 'Request My CV',
+    modal_title: 'Request CV',
+    modal_desc: 'I\'ll send my CV to your email within 24 hours.',
+    modal_send: 'Send Request',
+    cv_success_title: 'Request received!',
+    cv_success_desc: 'I\'ll send my CV to your inbox within 24 hours.',
+    footer_text: 'Built with curiosity and Claude Code · snehababu.eu'
+  },
+
+  de: {
+    nav_about: 'Über mich',
+    nav_skills: 'Fähigkeiten',
+    nav_experience: 'Erfahrung',
+    nav_projects: 'Projekte',
+    nav_certs: 'Zertifikate',
+    nav_blog: 'Blog',
+    nav_contact: 'Kontakt',
+
+    hero_tagline: 'Global erfahren. Hamburg-basiert. Bereit, etwas zu bewegen.',
+    hero_cta1: 'Kontakt aufnehmen',
+    hero_cta2: 'Lebenslauf anfragen',
+
+    about_title: 'Über',
+    about_subtitle: 'Eine interkulturelle Geschichte mit Hamburger Kapitel',
+    about_heading: 'Geprägt von vielen Welten',
+    about_p1: 'Hallo, ich bin jemand, der nicht nur branchenübergreifend arbeitet—ich lebe branchenübergreifend. Mit einem BA in Medien, Kommunikation und Wirtschaftspsychologie der Universität Bangalore und einem MBA in International Business der Birmingham City University wurde meine Karriere von der Leidenschaft geprägt, zu verstehen, was Menschen antreibt. Mein Weg führte mich von Oman und Indien über das Vereinigte Königreich nach Deutschland und machte mich zu einem kulturellen Chamäleon, das sich in nahezu jeder Umgebung zurechtfindet.',
+    about_p2: 'Beruflich habe ich über drei Jahre damit verbracht, die kreative Welt des Marketings (SEO, Social Media, Google Ads und Content-Erstellung) mit der strukturierten Welt des Projektmanagements und der Operations zu verbinden. Aber ich höre dort nicht auf. Ich bin sehr neugierig darauf, wie Dinge sich bewegen und verknüpfen, was mich auch zu den Bereichen Tech, IT und Logistik hinzieht.',
+    about_p3: 'Im Kern bin ich zuerst Zuhörerin, dann Strategin. Meine interkulturellen Erlebnisse haben mich zutiefst empathisch, hochgradig anpassungsfähig und ein wenig perfektionistisch gemacht, wenn es um Details geht. Ich glaube auch fest daran, intelligenter zu arbeiten und setze regelmäßig KI-Tools ein, um meine Kreativität zu steigern und Projekte reibungslos laufen zu lassen. Ob ich eine E-Mail-Kampagne gestalte, operative Abläufe plane oder mein nächstes Deutsch-Gespräch meistere (C1 ist in Arbeit!): Ich bringe eine globale Perspektive und viel Herzblut in alles, was ich tue.',
+    hobbies_label: 'Ein bisschen über mich abseits der Arbeit',
+    vol_title: 'Ehrenamt & Gemeinschaft',
+    vol1: 'ASB Community Volunteer — Altersheim Hamburg (2025–heute)',
+    vol2: 'Kantorei Hamburg Chormitglied (2024–2025)',
+    vol3: 'Waisenhausspendenkampagnen, Bangalore (2015–2018)',
+
+    skills_title: 'Meine',
+    skills_subtitle: 'Tools, Plattformen und Stärken, die ich mitbringe',
+    cat_marketing: 'Marketing',
+    cat_pm: 'Projektmanagement',
+    cat_interpersonal: 'Zwischenmenschliche Fähigkeiten',
+    cat_design_content: 'Design & AI-Tools',
+    cat_languages: 'Sprachen',
+    cat_learning: 'Aktuell am Lernen',
+
+    exp_title: 'Berufliche',
+    exp_subtitle: 'Eine Erfolgsbilanz über Branchen und Kontinente hinweg',
+    exp_tag_full: 'Vollzeit',
+    exp_tag_intern: 'Praktikum',
+    exp_tag_parttime: 'Teilzeit',
+    exp_tag_vol: 'Ehrenamt',
+    exp_tag_leader: 'Leadership',
+    exp1_date: 'Mai 2023 – Nov 2023',
+    exp1_role: 'Junior Marketing Projektmanagerin',
+    exp1_company: 'Nordic Hamburg Shipmanagement GmbH · Hamburg, Deutschland',
+    exp1_a1: 'Koordination internationaler Expeditionspartner wie Quark, Heritage und Poseidon.',
+    exp1_a2: 'Verwaltung von E-Mail-Kampagnen für 2.000+ Abonnenten mit einer Öffnungsrate von 32%.',
+    exp1_a3: '185 hochwertige Buchungen in weniger als 6 Monaten generiert.',
+    exp1_a4: 'End-to-end-Leitung von Multi-Stakeholder-Marketingkampagnen mit Jira.',
+    exp2_date: 'Feb 2021 – Jan 2022',
+    exp2_role: 'Junior Marketing Assistentin',
+    exp2_company: 'Phoenix Business & Legal Consultants · Indien',
+    exp2_a1: 'Google-Ads- und SEO-Kampagnen, die den Website-Traffic um über 50% steigerten.',
+    exp2_a2: 'Einführung eines agilen Workflow-Systems, das Team-Blocker um 70% reduzierte.',
+    exp3_date: 'Feb 2020 – Feb 2021',
+    exp3_role: 'Business Development Praktikantin',
+    exp3_company: 'IBN Hyan Chartered Accountants · Oman',
+    exp3_a1: 'Marktforschung und Unterstützung bei der Kundenakquise.',
+    exp3_a2: 'Social-Media-Management und Pflege der Unternehmenswebsite.',
+    exp4_date: '2025 (laufend)',
+    exp4_role: 'Coffee & Operations — Customer Experience',
+    exp4_company: 'Espresso House · Hamburg, Deutschland',
+    exp4_a1: 'Eine bewusste und persönliche Entscheidung — getrieben von einer Leidenschaft für Kaffeekultur und dem Ziel, Möglichkeiten in der Kaffee- und Gastronomiebranche zu erkunden, einschließlich der langfristigen Vision, eine eigene Kaffeebar zu eröffnen. Praktische Erfahrungen in Kundenservice, Lagerverwaltung, Bestandskoordination und Tagesgeschäft, während die Deutschkenntnisse durch echte Sprachimmersion in einem dynamischen Umfeld vertieft werden.',
+    exp5_date: '2018 – 2019',
+    exp5_role: 'Eventmanagerin',
+    exp5_company: 'MEDIATRON Department Festival · UK',
+    exp5_a1: 'Vollständige Eventkoordination von der Konzeption bis zur Durchführung.',
+    exp5_a2: 'Lieferantenmanagement und Vor-Ort-Logistik für das Abteilungsfestival.',
+    exp7_date: 'Mai 2017 – Aug 2017',
+    exp7_role: 'Assistentin Eventmanagement',
+    exp7_company: 'Al Mazza Events · Oman',
+    exp8_date: 'Mai 2016 – Jun 2016',
+    exp8_role: 'Assistentin der Redaktion',
+    exp8_company: 'Asianet Satellite Communications · Oman',
+    exp6_date: 'USA',
+    exp6_role: 'Global Young Leaders Conference',
+    exp6_company: 'Repräsentierte Indien & Oman',
+    exp6_a1: 'Führungstraining und internationale Repräsentation.',
+
+    act_title: 'Weitere',
+    act_subtitle: 'Jenseits des Lebenslaufs — die Rollen, die das Bild abrunden',
+    act_show: 'Mehr anzeigen',
+    act_hide: 'Weniger anzeigen',
+    act1_role: 'Einzelhandelsmitarbeiterin (Teilzeit)',
+    act1_org: 'Hollister & Co. · UK',
+    act1_date: 'Apr 2019 – Dez 2019',
+    act1_desc: 'Kundenservice, Teamkoordination und Lager-/Bestandsmanagement in einem schnelllebigen Einzelhandelsumfeld.',
+    act2_role: 'Coffee & Operations — Kundenerlebnis',
+    act2_org: 'Espresso House · Hamburg',
+    act2_date: '2025 – laufend',
+    act2_desc: 'Eine bewusste und persönliche Entscheidung — angetrieben von einer Leidenschaft für Kaffeekultur und dem Ziel, Möglichkeiten in der Kaffee- und Gastronomiebranche zu erkunden. Praktische Erfahrung in Kundenservice, Bestandsmanagement und Tagesbetrieb, während die deutsche Sprachkompetenz durch reale Immersion vertieft wird.',
+    act3_role: 'Eventmanagerin (Ehrenamtlich)',
+    act3_org: 'MEDIATRON Department Festival · UK',
+    act3_date: '2018 – 2019',
+    act3_desc: 'Vollständige Eventkoordination einschließlich Lieferantenmanagement, Planung und Vor-Ort-Logistik für ein Universitätsfestival.',
+    act4_role: 'Waisenhausspenden & Kampagnen (Ehrenamtlich)',
+    act4_org: 'Bangalore, Indien',
+    act4_date: '2015 – 2018',
+    act4_desc: 'Organisation von Spendenaktionen und Sensibilisierungskampagnen für lokale Waisenhäuser, von der Planung bis zur Umsetzung.',
+    act5_role: 'Global Young Leaders Conference',
+    act5_org: 'USA',
+    act5_date: 'Führung',
+    act5_desc: 'Führungstraining mit Vertretung Indiens und Omans auf internationaler Bühne.',
+    act6_role: 'Vibe Coding & KI-gestützte Entwicklung (Selbstgeleitet)',
+    act6_org: 'Unabhängig',
+    act6_date: '2025 – laufend',
+    act6_desc: 'Aufbau echter Projekte mit KI-Tools einschließlich Claude Code — darunter diese Portfolio-Website. Zusammenarbeit mit KI zum Entwerfen, Entwickeln und Iterieren von Webprojekten ohne traditionellen Programmierhintergrund. Beweis, dass Neugier und die richtigen Tools alles möglich machen.',
+    proj_title: 'Meine',
+    proj_subtitle: 'Karte hover oder antippen zum Umdrehen',
+    proj1_title: 'Hues of Hamburg',
+    proj1_tag: 'E-Commerce',
+    proj1_desc: 'Eine kuratierte Produktmarke, die aus Hamburg heraus startet. Aktuell im Stealth-Modus — bleibt gespannt.',
+    proj2_title: 'Freiberuflicher Kunde',
+    proj2_tag: 'Digitalmarketing & Strategie',
+    proj2_desc: 'End-to-End-Digitalmarketing-Support für einen privaten Kunden — Content-Strategie, Kampagnenmanagement und Markenwachstum.',
+    proj3_title: 'Independent Publishing',
+    proj3_tag: 'Independent Publishing & Produktdesign',
+    proj3_desc: 'Eine originelle Schreibwarenserie konzipiert, gestaltet und auf den Markt gebracht — von Produktdesign und visueller Identität bis hin zu Preisstrategie und Online-Vertrieb. Ein Solo-End-to-End-Produktlaunch.',
+    proj4_title: 'Kurzfilm — CLICK',
+    proj4_tag: 'Film & Creative Direction',
+    proj4_desc: 'Teil eines Kurzfilmprojekts zu einem sozialen Thema. Aufgaben umfassten Filmaufnahmen, Videobearbeitung und die Vorauswahl der Besetzung.',
+    proj5_title: 'News-Tabloid — News Pitcher',
+    proj5_tag: 'Content & Publishing',
+    proj5_desc: 'Ein Hochschultabloid \'News Pitcher\' erstellt — verantwortlich für Inhaltskuration, Lektorat und Layout-Design. Neue Ausgaben wurden monatlich im Rahmen des Projekts veröffentlicht.',
+    flip_hint: 'Antippen für mehr',
+
+    cert_title: 'Zertifikate',
+    cert_subtitle: 'Kontinuierliche Weiterbildung und stets auf dem neuesten Stand',
+    cert_complete: '✅ Abgeschlossen',
+    cert1_name: 'Professional Scrum Master PSM-I',
+    cert2_name: 'Google Analytics GA4',
+    cert3_name: 'Digitalmarketing-Zertifikat',
+    cert4_name: 'Amazon Sponsored Ads Zertifizierung',
+    cert5_name: 'Deutsch B2 Berufliche Deutsch',
+    cert6_name: 'Projektmanagement',
+    cert7_name: 'Goethe C1 Deutsch — Sprechen',
+    cert7_speaking: '✅ Sprechen: Bestanden',
+    cert7_written: '⏳ Schriftlich: In Bearbeitung',
+    cert8_name: 'HR-Zertifizierung',
+    cert9_name: 'Apple Search Ads Zertifizierung',
+    cert10_name: 'Generative KI für Projektmanager',
+    cert11_name: 'Marketing mit Canva',
+    cert12_name: 'IELTS',
+
+    blog_title: 'Gedanken &',
+    blog_subtitle: 'Marketing, Karriere, Leben in Deutschland und alles dazwischen.',
+    blog_cta: 'Zum Blog →',
+
+    contact_title: 'Kontakt',
+    contact_subtitle: 'Offen für Möglichkeiten, Zusammenarbeit und Gespräche',
+    contact_heading: 'Lass uns verbinden',
+    contact_desc: 'Ob Sie ein Projekt im Sinn haben, eine Stelle besprechen möchten oder einfach Hallo sagen — ich freue mich von Ihnen zu hören. Ansässig in Hamburg, offen für Remote- und Hybrid-Möglichkeiten in ganz Europa.',
+    contact_location: 'Hamburg, Deutschland',
+    form_name: 'Name',
+    form_email: 'E-Mail',
+    form_subject: 'Betreff',
+    form_message: 'Nachricht',
+    form_company: 'Unternehmen (optional)',
+    form_reason: 'Grund des Interesses',
+    form_send: 'Nachricht senden',
+    ph_name: 'Ihr Name',
+    ph_subject: 'Worum geht es?',
+    ph_message: 'Ihre Nachricht...',
+    ph_company: 'Ihr Unternehmen',
+    ph_reason: 'Erzählen Sie mir etwas über die Rolle oder den Kontext...',
+    success_title: 'Nachricht gesendet!',
+    success_desc: 'Danke für Ihre Nachricht. Ich melde mich bald.',
+    cv_text: 'Interesse an meiner vollständigen Berufserfahrung?',
+    cv_btn: 'Lebenslauf anfragen',
+    modal_title: 'Lebenslauf anfragen',
+    modal_desc: 'Ich sende Ihnen meinen Lebenslauf innerhalb von 24 Stunden per E-Mail.',
+    modal_send: 'Anfrage senden',
+    cv_success_title: 'Anfrage erhalten!',
+    cv_success_desc: 'Ich sende meinen Lebenslauf innerhalb von 24 Stunden an Ihr Postfach.',
+    footer_text: 'Erstellt mit Neugier und Claude Code · snehababu.eu'
+  }
+};
+
+function applyTranslations(lang) {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (translations[lang][key] !== undefined) {
+      el.textContent = translations[lang][key];
+    }
+  });
+
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (translations[lang][key] !== undefined) {
+      el.placeholder = translations[lang][key];
+    }
+  });
+
+  /* Special-case section titles that have a <span> child */
+  const aboutTitle = document.querySelector('#about .section-title');
+  if (aboutTitle) {
+    if (lang === 'en') {
+      aboutTitle.innerHTML = 'About <span>Me</span>';
+    } else {
+      aboutTitle.innerHTML = 'Über <span>Mich</span>';
+    }
+  }
+  const skillsTitle = document.querySelector('#skills .section-title');
+  if (skillsTitle) {
+    if (lang === 'en') {
+      skillsTitle.innerHTML = 'My <span>Skills</span>';
+    } else {
+      skillsTitle.innerHTML = 'Meine <span>Fähigkeiten</span>';
+    }
+  }
+  const expTitle = document.querySelector('#experience .section-title');
+  if (expTitle) {
+    if (lang === 'en') {
+      expTitle.innerHTML = 'Work <span>Experience</span>';
+    } else {
+      expTitle.innerHTML = 'Berufliche <span>Erfahrung</span>';
+    }
+  }
+  document.querySelectorAll('.exp-toggle').forEach(btn => {
+    const isOpen = btn.closest('.exp-entry').classList.contains('open');
+    btn.textContent = isOpen
+      ? (lang === 'de' ? 'Details ausblenden' : 'Hide details')
+      : (lang === 'de' ? 'Details anzeigen' : 'Show details');
+  });
+  document.querySelectorAll('.activity-toggle').forEach(btn => {
+    const isOpen = btn.closest('.activity-card').classList.contains('open');
+    btn.textContent = isOpen
+      ? (lang === 'de' ? 'Weniger anzeigen' : 'Show less')
+      : (lang === 'de' ? 'Mehr anzeigen' : 'Show more');
+  });
+  const actTitle = document.querySelector('#activities .section-title');
+  if (actTitle) {
+    if (lang === 'en') {
+      actTitle.innerHTML = 'Other <span>Activities &amp; Roles</span>';
+    } else {
+      actTitle.innerHTML = 'Weitere <span>Aktivitäten &amp; Rollen</span>';
+    }
+  }
+  const projTitle = document.querySelector('#projects .section-title');
+  if (projTitle) {
+    if (lang === 'en') {
+      projTitle.innerHTML = 'My <span>Projects</span>';
+    } else {
+      projTitle.innerHTML = 'Meine <span>Projekte</span>';
+    }
+  }
+  const certTitle = document.querySelector('#certifications .section-title');
+  if (certTitle) {
+    if (lang === 'en') {
+      certTitle.innerHTML = 'Certifications <span>&amp; Credentials</span>';
+    } else {
+      certTitle.innerHTML = 'Zertifikate <span>&amp; Nachweise</span>';
+    }
+  }
+  const blogTitle = document.querySelector('#blog .section-title');
+  if (blogTitle) {
+    if (lang === 'en') {
+      blogTitle.innerHTML = 'Thoughts &amp; <span>Insights</span>';
+    } else {
+      blogTitle.innerHTML = 'Gedanken &amp; <span>Einblicke</span>';
+    }
+  }
+  const contactTitle = document.querySelector('#contact .section-title');
+  if (contactTitle) {
+    if (lang === 'en') {
+      contactTitle.innerHTML = 'Get in <span>Touch</span>';
+    } else {
+      contactTitle.innerHTML = '<span>Kontakt</span> aufnehmen';
+    }
+  }
+
+  /* About heading span */
+  const aboutH2 = document.querySelector('.about-text h2');
+  if (aboutH2) {
+    if (lang === 'en') {
+      aboutH2.innerHTML = 'Shaped by <span>Many Worlds</span>';
+    } else {
+      aboutH2.innerHTML = 'Geprägt von <span>vielen Welten</span>';
+    }
+  }
+
+  /* Contact heading span */
+  const contactH3 = document.querySelector('.contact-info h3');
+  if (contactH3) {
+    if (lang === 'en') {
+      contactH3.innerHTML = 'Let\'s <span>Connect</span>';
+    } else {
+      contactH3.innerHTML = 'Lass uns <span>verbinden</span>';
+    }
+  }
+}
+
+function toggleLang() {
+  currentLang = currentLang === 'en' ? 'de' : 'en';
+  const newLabel = currentLang === 'en' ? 'DE' : 'EN';
+  document.getElementById('langToggle').textContent = newLabel;
+  const mobile = document.getElementById('langToggleMobile');
+  if (mobile) mobile.textContent = newLabel;
+  applyTranslations(currentLang);
+}
+
+/* Init English */
+applyTranslations('en');
+
+/* Butterfly cursor */
+(function() {
+  const el = document.getElementById('butterfly-cursor');
+  document.addEventListener('mousemove', function(e) {
+    el.style.left = e.clientX + 'px';
+    el.style.top  = e.clientY + 'px';
+  });
+})();
+</script>
+</body>
+</html>

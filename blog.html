@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thoughts & Insights — Sneha Babu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --coral: #E8506A;
+      --coral-dark: #c73d56;
+      --coral-light: #f07088;
+      --coral-pale: #fde8ec;
+      --white: #FAFAF7;
+      --off-white: #F2F2EE;
+      --light-gray: #f4f4f6;
+      --gray: #8a8a9a;
+      --dark-gray: #444455;
+      --dark: #1a1a2e;
+      --font: 'Poppins', sans-serif;
+      --shadow: 0 4px 24px rgba(232, 80, 106, 0.12);
+      --shadow-lg: 0 8px 40px rgba(232, 80, 106, 0.18);
+      --radius: 16px;
+      --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font);
+      background: var(--white);
+      color: var(--dark);
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--light-gray); }
+    ::-webkit-scrollbar-thumb { background: var(--coral); border-radius: 3px; }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── NAVBAR ── */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 18px 0;
+      transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
+    }
+
+    #navbar.scrolled {
+      background: rgba(255,255,255,0.97);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+      padding: 12px 0;
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .nav-logo {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--coral);
+      letter-spacing: -1px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-links a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--dark-gray);
+      padding: 6px 12px;
+      border-radius: 20px;
+      transition: color var(--transition), background var(--transition);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--coral);
+      background: var(--coral-pale);
+    }
+
+    .lang-toggle {
+      background: var(--coral);
+      color: white;
+      border: none;
+      padding: 7px 16px;
+      border-radius: 20px;
+      font-family: var(--font);
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+      letter-spacing: 0.5px;
+    }
+
+    .lang-toggle:hover {
+      background: var(--coral-dark);
+      transform: scale(1.05);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2.5px;
+      background: var(--dark);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* Mobile nav */
+    .mobile-nav-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 1100;
+    }
+
+    .mobile-nav-overlay.open { display: block; }
+
+    .mobile-nav {
+      position: fixed;
+      top: 0; right: -280px;
+      width: 270px;
+      height: 100%;
+      background: var(--white);
+      z-index: 1200;
+      padding: 72px 28px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      box-shadow: -4px 0 24px rgba(0,0,0,0.12);
+      transition: right var(--transition);
+    }
+
+    .mobile-nav.open { right: 0; }
+
+    .mobile-nav a {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--dark-gray);
+      padding: 10px 16px;
+      border-radius: 10px;
+      transition: background var(--transition), color var(--transition);
+    }
+
+    .mobile-nav a:hover,
+    .mobile-nav a.active {
+      background: var(--coral-pale);
+      color: var(--coral);
+    }
+
+    /* ── HERO STRIP ── */
+    .blog-hero {
+      background: var(--dark);
+      padding: 140px 0 80px;
+      text-align: center;
+    }
+
+    .blog-hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .blog-hero h1 span { color: var(--coral); }
+
+    .blog-hero p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.6);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ── FILTERS ── */
+    .blog-section {
+      padding: 72px 0 100px;
+    }
+
+    .blog-filters {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+
+    .filter-btn {
+      background: var(--light-gray);
+      color: var(--dark-gray);
+      border: none;
+      padding: 9px 22px;
+      border-radius: 24px;
+      font-family: var(--font);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition), transform var(--transition);
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--coral);
+      color: white;
+      transform: translateY(-1px);
+    }
+
+    /* ── BLOG GRID ── */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+    }
+
+    .blog-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.05);
+      border: 1px solid transparent;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--coral);
+    }
+
+    .blog-card.hidden { display: none; }
+
+    .blog-cat-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--coral);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .blog-cat-tag::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--coral);
+      flex-shrink: 0;
+    }
+
+    .blog-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 12px;
+      line-height: 1.45;
+    }
+
+    .blog-preview {
+      font-size: 0.86rem;
+      color: var(--gray);
+      line-height: 1.65;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .blog-read-more {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--coral);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: gap var(--transition);
+      align-self: flex-start;
+    }
+
+    .blog-card:hover .blog-read-more { gap: 10px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 0.82rem;
+    }
+
+    footer a {
+      color: var(--coral);
+      font-weight: 600;
+    }
+
+    /* ── FADE IN ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    .delay-1 { transition-delay: 0.08s !important; }
+    .delay-2 { transition-delay: 0.16s !important; }
+    .delay-3 { transition-delay: 0.24s !important; }
+    .delay-4 { transition-delay: 0.32s !important; }
+    .delay-5 { transition-delay: 0.40s !important; }
+    .delay-6 { transition-delay: 0.48s !important; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    @media (max-width: 600px) {
+      .blog-grid { grid-template-columns: 1fr; }
+      .blog-hero { padding: 120px 0 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html#hero" class="nav-logo">SB</a>
+    <div class="nav-links">
+      <a href="index.html#about"          data-i18n="nav_about">About</a>
+      <a href="index.html#skills"         data-i18n="nav_skills">Skills</a>
+      <a href="index.html#experience"     data-i18n="nav_experience">Experience</a>
+      <a href="index.html#projects"       data-i18n="nav_projects">Projects</a>
+      <a href="index.html#certifications" data-i18n="nav_certs">Certifications</a>
+      <a href="blog.html" class="active"  data-i18n="nav_blog">Blog</a>
+      <a href="index.html#contact"        data-i18n="nav_contact">Contact</a>
+      <button class="lang-toggle" id="langToggle" onclick="toggleLang()">DE</button>
+    </div>
+    <div class="hamburger" id="hamburger" onclick="toggleMobileNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile nav drawer -->
+<div class="mobile-nav-overlay" id="mobileNavOverlay" onclick="toggleMobileNav()"></div>
+<nav class="mobile-nav" id="mobileNav">
+  <a href="index.html#about"          onclick="toggleMobileNav()" data-i18n="nav_about">About</a>
+  <a href="index.html#skills"         onclick="toggleMobileNav()" data-i18n="nav_skills">Skills</a>
+  <a href="index.html#experience"     onclick="toggleMobileNav()" data-i18n="nav_experience">Experience</a>
+  <a href="index.html#projects"       onclick="toggleMobileNav()" data-i18n="nav_projects">Projects</a>
+  <a href="index.html#certifications" onclick="toggleMobileNav()" data-i18n="nav_certs">Certifications</a>
+  <a href="blog.html" class="active"  onclick="toggleMobileNav()" data-i18n="nav_blog">Blog</a>
+  <a href="index.html#contact"        onclick="toggleMobileNav()" data-i18n="nav_contact">Contact</a>
+  <button class="lang-toggle" onclick="toggleLang(); toggleMobileNav();" style="width:fit-content; margin-top:12px;" id="langToggleMobile">DE</button>
+</nav>
+
+<!-- HERO STRIP -->
+<header class="blog-hero">
+  <div class="container">
+    <h1 data-i18n-blog-heading>Thoughts &amp; <span>Insights</span></h1>
+    <p data-i18n="blog_hero_sub">Ideas on marketing, AI, career growth, and life across borders.</p>
+  </div>
+</header>
+
+<!-- BLOG CONTENT -->
+<section class="blog-section">
+  <div class="container">
+
+    <div class="blog-filters fade-in">
+      <button class="filter-btn active" onclick="filterBlog('all', this)" data-i18n="filter_all">All</button>
+      <button class="filter-btn" onclick="filterBlog('Personal', this)" data-i18n="filter_personal">Personal</button>
+      <button class="filter-btn" onclick="filterBlog('Career', this)" data-i18n="filter_career">Career</button>
+      <button class="filter-btn" onclick="filterBlog('Marketing & AI', this)" data-i18n="filter_marketing">Marketing &amp; AI</button>
+    </div>
+
+    <div class="blog-grid">
+
+      <div class="blog-card fade-in delay-1" data-category="Personal">
+        <div class="blog-cat-tag" data-i18n="cat_personal">Personal</div>
+        <h3 class="blog-title" data-i18n="blog1_title">I've lived on three continents. Germany still surprised me.</h3>
+        <p class="blog-preview" data-i18n="blog1_preview">Having lived in Oman, India and the UK, moving countries was never new to me. But Hamburg taught me that language is more than words — it's belonging.</p>
+        <a href="blog/blog1.html" class="blog-read-more" data-i18n="read_more">Read more →</a>
+      </div>
+
+      <div class="blog-card fade-in delay-2" data-category="Personal">
+        <div class="blog-cat-tag" data-i18n="cat_personal">Personal</div>
+        <h3 class="blog-title" data-i18n="blog2_title">Why I knocked on an old people's home's door to learn German</h3>
+        <p class="blog-preview" data-i18n="blog2_preview">A social media post, a volunteer application, and suddenly I was playing games and hearing history from elderly Hamburg residents. Best decision I made.</p>
+        <a href="blog/blog2.html" class="blog-read-more" data-i18n="read_more">Read more →</a>
+      </div>
+
+      <div class="blog-card fade-in delay-3" data-category="Career">
+        <div class="blog-cat-tag" data-i18n="cat_career">Career</div>
+        <h3 class="blog-title" data-i18n="blog3_title">I learned the language. I still didn't get the job. Here's what I did next.</h3>
+        <p class="blog-preview" data-i18n="blog3_preview">The job search after language was no longer the barrier. Community, resilience, and choosing to keep moving anyway.</p>
+        <a href="blog/blog3.html" class="blog-read-more" data-i18n="read_more">Read more →</a>
+      </div>
+
+      <div class="blog-card fade-in delay-4" data-category="Marketing & AI">
+        <div class="blog-cat-tag" data-i18n="cat_marketing_ai">Marketing &amp; AI</div>
+        <h3 class="blog-title" data-i18n="blog4_title">How I built a marketing campaign using AI tools</h3>
+        <p class="blog-preview" data-i18n="blog4_preview">Real campaign work, real tools, real results. Here's what working with AI in marketing actually looks like.</p>
+        <a href="blog/blog4.html" class="blog-read-more" data-i18n="read_more">Read more →</a>
+      </div>
+
+      <div class="blog-card fade-in delay-5" data-category="Marketing & AI">
+        <div class="blog-cat-tag" data-i18n="cat_marketing_ai">Marketing &amp; AI</div>
+        <h3 class="blog-title" data-i18n="blog5_title">The marketing tools reshaping the industry in 2025</h3>
+        <p class="blog-preview" data-i18n="blog5_preview">A practitioner's view on GA4, HubSpot, LinkedIn Ads, and AI content tools — not a textbook overview.</p>
+        <a href="blog/blog5.html" class="blog-read-more" data-i18n="read_more">Read more →</a>
+      </div>
+
+      <div class="blog-card fade-in delay-6" data-category="Career">
+        <div class="blog-cat-tag" data-i18n="cat_career">Career</div>
+        <h3 class="blog-title" data-i18n="blog6_title">What an MBA from the UK taught me — and what Hamburg taught me the rest</h3>
+        <p class="blog-preview" data-i18n="blog6_preview">Academic strategy meets real-world Germany. What no module prepares you for.</p>
+        <a href="blog/blog6.html" class="blog-read-more" data-i18n="read_more">Read more →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Built with curiosity and <a href="https://claude.ai/code" target="_blank">Claude Code</a> · snehababu.eu</p>
+</footer>
+
+<script>
+  /* ── NAVBAR SCROLL ── */
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 30);
+  });
+
+  /* ── MOBILE NAV ── */
+  function toggleMobileNav() {
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    const overlay = document.getElementById('mobileNavOverlay');
+    hamburger.classList.toggle('open');
+    mobileNav.classList.toggle('open');
+    overlay.classList.toggle('open');
+  }
+
+  /* ── BLOG FILTER ── */
+  function filterBlog(category, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.blog-card').forEach(card => {
+      if (category === 'all' || card.dataset.category === category) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  }
+
+  /* ── FADE IN ON SCROLL ── */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  /* ── LANGUAGE TOGGLE ── */
+  const translations = {
+    en: {
+      nav_about: 'About',
+      nav_skills: 'Skills',
+      nav_experience: 'Experience',
+      nav_projects: 'Projects',
+      nav_certs: 'Certifications',
+      nav_blog: 'Blog',
+      nav_contact: 'Contact',
+      blog_hero_sub: 'Ideas on marketing, AI, career growth, and life across borders.',
+      filter_all: 'All',
+      filter_personal: 'Personal',
+      filter_career: 'Career',
+      filter_marketing: 'Marketing & AI',
+      cat_personal: 'Personal',
+      cat_career: 'Career',
+      cat_marketing_ai: 'Marketing & AI',
+      blog1_title: 'I\'ve lived on three continents. Germany still surprised me.',
+      blog1_preview: 'Having lived in Oman, India and the UK, moving countries was never new to me. But Hamburg taught me that language is more than words — it\'s belonging.',
+      blog2_title: 'Why I knocked on an old people\'s home\'s door to learn German',
+      blog2_preview: 'A social media post, a volunteer application, and suddenly I was playing games and hearing history from elderly Hamburg residents. Best decision I made.',
+      blog3_title: 'I learned the language. I still didn\'t get the job. Here\'s what I did next.',
+      blog3_preview: 'The job search after language was no longer the barrier. Community, resilience, and choosing to keep moving anyway.',
+      blog4_title: 'How I built a marketing campaign using AI tools',
+      blog4_preview: 'Real campaign work, real tools, real results. Here\'s what working with AI in marketing actually looks like.',
+      blog5_title: 'The marketing tools reshaping the industry in 2025',
+      blog5_preview: 'A practitioner\'s view on GA4, HubSpot, LinkedIn Ads, and AI content tools — not a textbook overview.',
+      blog6_title: 'What an MBA from the UK taught me — and what Hamburg taught me the rest',
+      blog6_preview: 'Academic strategy meets real-world Germany. What no module prepares you for.',
+      read_more: 'Read more →'
+    },
+    de: {
+      nav_about: 'Über mich',
+      nav_skills: 'Fähigkeiten',
+      nav_experience: 'Erfahrung',
+      nav_projects: 'Projekte',
+      nav_certs: 'Zertifikate',
+      nav_blog: 'Blog',
+      nav_contact: 'Kontakt',
+      blog_hero_sub: 'Ideen zu Marketing, KI, Karriere und dem Leben jenseits von Grenzen.',
+      filter_all: 'Alle',
+      filter_personal: 'Persönlich',
+      filter_career: 'Karriere',
+      filter_marketing: 'Marketing & KI',
+      cat_personal: 'Persönlich',
+      cat_career: 'Karriere',
+      cat_marketing_ai: 'Marketing & KI',
+      blog1_title: 'Ich habe auf drei Kontinenten gelebt. Deutschland hat mich trotzdem überrascht.',
+      blog1_preview: 'Nach Jahren in Oman, Indien und Großbritannien war Umziehen nichts Neues für mich. Aber Hamburg lehrte mich: Sprache ist mehr als Worte — sie ist Zugehörigkeit.',
+      blog2_title: 'Warum ich an der Tür eines Altenheims klingelte, um Deutsch zu lernen',
+      blog2_preview: 'Ein Social-Media-Post, eine Bewerbung — und plötzlich spielte ich Spiele und hörte Geschichte von älteren Hamburgern. Beste Entscheidung überhaupt.',
+      blog3_title: 'Ich habe die Sprache gelernt. Den Job habe ich trotzdem nicht bekommen. Was ich dann tat.',
+      blog3_preview: 'Die Jobsuche, als die Sprache kein Hindernis mehr war. Gemeinschaft, Resilienz und die Entscheidung, weiterzumachen.',
+      blog4_title: 'Wie ich mit KI-Tools eine Marketingkampagne aufgebaut habe',
+      blog4_preview: 'Echte Kampagnenarbeit, echte Tools, echte Ergebnisse. So sieht Marketing mit KI wirklich aus.',
+      blog5_title: 'Die Marketing-Tools, die die Branche 2025 verändern',
+      blog5_preview: 'Ein Praktiker-Blick auf GA4, HubSpot, LinkedIn Ads und KI-Content-Tools — kein Lehrbuch-Überblick.',
+      blog6_title: 'Was mir ein MBA aus Großbritannien beibrachte — und was Hamburg mir den Rest lehrte',
+      blog6_preview: 'Akademische Strategie trifft reales Deutschland. Worauf kein Modul vorbereitet.',
+      read_more: 'Weiterlesen →'
+    }
+  };
+
+  let currentLang = 'en';
+
+  function toggleLang() {
+    currentLang = currentLang === 'en' ? 'de' : 'en';
+    document.getElementById('langToggle').textContent = currentLang === 'en' ? 'DE' : 'EN';
+    const mobile = document.getElementById('langToggleMobile');
+    if (mobile) mobile.textContent = currentLang === 'en' ? 'DE' : 'EN';
+    applyTranslations(currentLang);
+  }
+
+  function applyTranslations(lang) {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (translations[lang][key] !== undefined) {
+        el.textContent = translations[lang][key];
+      }
+    });
+
+    /* Blog heading span */
+    const blogH = document.querySelector('[data-i18n-blog-heading]');
+    if (blogH) {
+      blogH.innerHTML = lang === 'en'
+        ? 'Thoughts &amp; <span>Insights</span>'
+        : 'Gedanken &amp; <span>Einblicke</span>';
+    }
+
+    document.documentElement.lang = lang;
+  }
+
+  applyTranslations('en');
+</script>
+</body>
+</html>

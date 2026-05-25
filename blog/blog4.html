@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How I built a marketing campaign using AI tools — Sneha Babu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --coral: #E8506A; --coral-dark: #c73d56; --coral-pale: #fde8ec;
+      --white: #FAFAF7; --light-gray: #f4f4f6; --gray: #8a8a9a;
+      --dark-gray: #444455; --dark: #1a1a2e; --font: 'Poppins', sans-serif;
+      --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--white); color: var(--dark); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--light-gray); }
+    ::-webkit-scrollbar-thumb { background: var(--coral); border-radius: 3px; }
+
+    #navbar { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 18px 0; transition: background var(--transition), box-shadow var(--transition), padding var(--transition); }
+    #navbar.scrolled { background: rgba(255,255,255,0.97); box-shadow: 0 2px 20px rgba(0,0,0,0.08); padding: 12px 0; backdrop-filter: blur(12px); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+    .nav-logo { font-size: 1.6rem; font-weight: 900; color: var(--coral); letter-spacing: -1px; }
+    .nav-links { display: flex; align-items: center; gap: 6px; }
+    .nav-links a { font-size: 0.88rem; font-weight: 500; color: var(--dark-gray); padding: 6px 12px; border-radius: 20px; transition: color var(--transition), background var(--transition); }
+    .nav-links a:hover, .nav-links a.active { color: var(--coral); background: var(--coral-pale); }
+    .lang-toggle { background: var(--coral); color: white; border: none; padding: 7px 16px; border-radius: 20px; font-family: var(--font); font-size: 0.82rem; font-weight: 700; cursor: pointer; transition: background var(--transition); letter-spacing: 0.5px; }
+    .lang-toggle:hover { background: var(--coral-dark); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 26px; height: 2.5px; background: var(--dark); border-radius: 2px; transition: var(--transition); }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+    .mobile-nav-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 1100; }
+    .mobile-nav-overlay.open { display: block; }
+    .mobile-nav { position: fixed; top: 0; right: -280px; width: 270px; height: 100%; background: var(--white); z-index: 1200; padding: 72px 28px 40px; display: flex; flex-direction: column; gap: 6px; box-shadow: -4px 0 24px rgba(0,0,0,0.12); transition: right var(--transition); }
+    .mobile-nav.open { right: 0; }
+    .mobile-nav a { font-size: 1rem; font-weight: 600; color: var(--dark-gray); padding: 10px 16px; border-radius: 10px; transition: background var(--transition), color var(--transition); }
+    .mobile-nav a:hover, .mobile-nav a.active { background: var(--coral-pale); color: var(--coral); }
+
+    .post-hero { background: var(--dark); padding: 140px 0 80px; position: relative; overflow: hidden; text-align: center; }
+    .doodle-layer { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+    .doodle { position: absolute; pointer-events: none; animation: doodle-float ease-in-out infinite; }
+    @keyframes doodle-float {
+      0%, 100% { transform: rotate(var(--rot,0deg)) translateY(0px); }
+      50% { transform: rotate(var(--rot,0deg)) translateY(-12px); }
+    }
+    .hero-inner { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.55); font-size: 0.83rem; margin-bottom: 32px; transition: color 0.2s; }
+    .back-link:hover { color: var(--coral); }
+    .post-meta { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; justify-content: center; margin-bottom: 20px; }
+    .post-cat { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--coral); background: rgba(232,80,106,0.18); padding: 4px 14px; border-radius: 20px; }
+    .post-date, .post-time { font-size: 0.8rem; color: rgba(255,255,255,0.45); }
+    .post-hero h1 { font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight: 800; color: white; line-height: 1.28; }
+
+    .post-body { max-width: 700px; margin: 0 auto; padding: 72px 24px 48px; }
+    .post-body p { font-size: 1rem; line-height: 1.85; color: #3a3a4a; margin-bottom: 26px; }
+    .post-body h3 { font-size: 1.12rem; font-weight: 700; color: var(--dark); margin: 44px 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--coral-pale); }
+
+    .read-next { max-width: 700px; margin: 0 auto; padding: 36px 24px 80px; border-top: 1px solid var(--coral-pale); }
+    .read-next-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1.2px; color: var(--gray); margin-bottom: 6px; }
+    .read-next-link { font-size: 0.95rem; font-weight: 700; color: var(--coral); display: inline-flex; align-items: center; gap: 6px; }
+    .read-next-link:hover { text-decoration: underline; }
+
+    footer { background: var(--dark); color: rgba(255,255,255,0.5); text-align: center; padding: 28px 24px; font-size: 0.82rem; }
+    footer a { color: var(--coral); font-weight: 600; }
+
+    @media (max-width: 900px) { .nav-links { display: none; } .hamburger { display: flex; } }
+    @media (max-width: 600px) { .post-hero { padding: 120px 0 60px; } .post-body { padding: 48px 20px 40px; } }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="../index.html#hero" class="nav-logo">SB</a>
+    <div class="nav-links">
+      <a href="../index.html#about"          data-i18n="nav_about">About</a>
+      <a href="../index.html#skills"         data-i18n="nav_skills">Skills</a>
+      <a href="../index.html#experience"     data-i18n="nav_experience">Experience</a>
+      <a href="../index.html#projects"       data-i18n="nav_projects">Projects</a>
+      <a href="../index.html#certifications" data-i18n="nav_certs">Certifications</a>
+      <a href="../blog.html" class="active"  data-i18n="nav_blog">Blog</a>
+      <a href="../index.html#contact"        data-i18n="nav_contact">Contact</a>
+      <button class="lang-toggle" id="langToggle" onclick="toggleLang()">DE</button>
+    </div>
+    <div class="hamburger" id="hamburger" onclick="toggleMobileNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+<div class="mobile-nav-overlay" id="mobileNavOverlay" onclick="toggleMobileNav()"></div>
+<nav class="mobile-nav" id="mobileNav">
+  <a href="../index.html#about"          onclick="toggleMobileNav()" data-i18n="nav_about">About</a>
+  <a href="../index.html#skills"         onclick="toggleMobileNav()" data-i18n="nav_skills">Skills</a>
+  <a href="../index.html#experience"     onclick="toggleMobileNav()" data-i18n="nav_experience">Experience</a>
+  <a href="../index.html#projects"       onclick="toggleMobileNav()" data-i18n="nav_projects">Projects</a>
+  <a href="../index.html#certifications" onclick="toggleMobileNav()" data-i18n="nav_certs">Certifications</a>
+  <a href="../blog.html" class="active"  onclick="toggleMobileNav()" data-i18n="nav_blog">Blog</a>
+  <a href="../index.html#contact"        onclick="toggleMobileNav()" data-i18n="nav_contact">Contact</a>
+  <button class="lang-toggle" onclick="toggleLang(); toggleMobileNav();" style="width:fit-content;margin-top:12px;" id="langToggleMobile">DE</button>
+</nav>
+
+<header class="post-hero">
+  <div class="doodle-layer">
+    <!-- Robot with paintbrush -->
+    <svg class="doodle" style="top:12%;left:5%;--rot:-5deg;animation-duration:10s;animation-delay:0s;" width="56" height="72" viewBox="0 0 56 72" fill="none" stroke="rgba(245,240,232,0.72)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="10" y="12" width="30" height="24" rx="4"/>
+      <rect x="14" y="40" width="22" height="22" rx="3"/>
+      <circle cx="18" cy="22" r="4"/>
+      <circle cx="32" cy="22" r="4"/>
+      <line x1="25" y1="8" x2="25" y2="12"/>
+      <circle cx="25" cy="6" r="3"/>
+      <line x1="36" y1="48" x2="50" y2="36"/>
+      <path d="M48 30 L54 30 L50 36 L48 30"/>
+      <line x1="14" y1="62" x2="14" y2="72"/>
+      <line x1="36" y1="62" x2="36" y2="72"/>
+    </svg>
+    <!-- Lightbulb -->
+    <svg class="doodle" style="top:18%;right:7%;--rot:6deg;animation-duration:8s;animation-delay:1s;" width="44" height="60" viewBox="0 0 44 60" fill="none" stroke="rgba(245,240,232,0.7)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 4 C10 4 4 12 4 21 C4 30 11 36 15 42 L29 42 C33 36 40 30 40 21 C40 12 34 4 22 4 Z"/>
+      <line x1="15" y1="48" x2="29" y2="48"/>
+      <line x1="17" y1="54" x2="27" y2="54"/>
+    </svg>
+    <!-- Bar chart -->
+    <svg class="doodle" style="bottom:18%;right:6%;--rot:-4deg;animation-duration:11s;animation-delay:0.5s;" width="60" height="60" viewBox="0 0 60 60" fill="none" stroke="rgba(245,240,232,0.68)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="4" y1="54" x2="56" y2="54"/>
+      <rect x="8" y="30" width="12" height="24"/>
+      <rect x="24" y="18" width="12" height="36"/>
+      <rect x="40" y="8" width="12" height="46"/>
+    </svg>
+    <!-- Magic wand -->
+    <svg class="doodle" style="top:42%;left:6%;--rot:35deg;animation-duration:9s;animation-delay:2s;" width="52" height="52" viewBox="0 0 52 52" fill="none" stroke="rgba(245,240,232,0.65)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="6" y1="46" x2="36" y2="16"/>
+      <path d="M36 6 L37.5 11 L43 12 L37.5 13 L36 18 L34.5 13 L29 12 L34.5 11 Z"/>
+      <line x1="44" y1="32" x2="48" y2="28"/>
+      <line x1="48" y1="38" x2="52" y2="34"/>
+      <line x1="44" y1="44" x2="52" y2="44"/>
+    </svg>
+    <!-- Small rocket -->
+    <svg class="doodle" style="top:22%;left:22%;--rot:-20deg;animation-duration:12s;animation-delay:1.5s;" width="36" height="62" viewBox="0 0 36 62" fill="none" stroke="rgba(245,240,232,0.6)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 2 C10 10 6 22 6 34 L30 34 C30 22 26 10 18 2 Z"/>
+      <circle cx="18" cy="20" r="5"/>
+      <path d="M6 34 L2 46 L10 40"/>
+      <path d="M30 34 L34 46 L26 40"/>
+      <path d="M12 44 L18 56 L24 44"/>
+    </svg>
+    <!-- Pencil -->
+    <svg class="doodle" style="bottom:10%;left:16%;--rot:20deg;animation-duration:10s;animation-delay:0.8s;" width="36" height="68" viewBox="0 0 36 68" fill="none" stroke="rgba(245,240,232,0.65)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 4 L28 4 L28 54 L18 66 L8 54 Z"/>
+      <line x1="8" y1="54" x2="28" y2="54"/>
+      <line x1="8" y1="12" x2="28" y2="12"/>
+    </svg>
+  </div>
+  <div class="hero-inner">
+    <a href="../blog.html" class="back-link">← Back to Blog</a>
+    <div class="post-meta">
+      <span class="post-cat">Marketing &amp; AI</span>
+      <span class="post-date">March 2025</span>
+      <span class="post-time">3 min read</span>
+    </div>
+    <h1>How I built a marketing campaign using AI tools</h1>
+  </div>
+</header>
+
+<article class="post-body">
+  <p>When AI tools started taking over every marketing conversation, I had two options. Panic. Or get curious. I chose curious. Panic was also there, briefly, in the background. But curious won.</p>
+
+  <h3>The learning curve was real. And fast.</h3>
+  <p>I started where most people start — Canva. Which sounds basic until you discover Canva AI, and suddenly you're generating brand visuals in seconds, resizing campaigns for every platform automatically, and creating content that used to take half a day in a fraction of the time. Then I found Flair.ai for product photography. Then Claude for strategy and copy. Then Pebblely for clean background generation. Then Surfer SEO for content that actually ranks. Then I looked up and realised I had accidentally built an AI-powered marketing workflow.</p>
+
+  <h3>What actually changed.</h3>
+  <p>The tools didn't replace the strategy — they supercharged it. I could test more ideas faster. I could produce more content without burning out. I could spend less time on execution and more time on the thinking that actually matters.</p>
+  <p>For a campaign, the process looked like this: brief the strategy in Claude, generate visual concepts in Flair.ai and Canva AI, write and optimise copy with Jasper and Surfer SEO, schedule and analyse through HubSpot. What used to be a week of work became two focused days.</p>
+
+  <h3>The mindset shift.</h3>
+  <p>The marketers I see struggling with AI are the ones treating it as a threat. The ones thriving are treating it as a very fast, very capable intern who needs good direction. Your job isn't to compete with the tools — it's to know how to use them better than anyone else.</p>
+  <p>That's the skill. That's what recruiters are starting to look for. And honestly? It's also just more fun.</p>
+</article>
+
+<div class="read-next">
+  <p class="read-next-label">Read next</p>
+  <a href="blog5.html" class="read-next-link">The marketing tools reshaping the industry in 2026 →</a>
+</div>
+
+<footer>
+  <p>Built with curiosity and <a href="https://claude.ai/code" target="_blank">Claude Code</a> · snehababu.eu</p>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 30);
+  });
+  function toggleMobileNav() {
+    document.getElementById('hamburger').classList.toggle('open');
+    document.getElementById('mobileNav').classList.toggle('open');
+    document.getElementById('mobileNavOverlay').classList.toggle('open');
+  }
+  let currentLang = 'en';
+  const t = {
+    en: { nav_about:'About', nav_skills:'Skills', nav_experience:'Experience', nav_projects:'Projects', nav_certs:'Certifications', nav_blog:'Blog', nav_contact:'Contact' },
+    de: { nav_about:'Über mich', nav_skills:'Fähigkeiten', nav_experience:'Erfahrung', nav_projects:'Projekte', nav_certs:'Zertifikate', nav_blog:'Blog', nav_contact:'Kontakt' }
+  };
+  function toggleLang() {
+    currentLang = currentLang === 'en' ? 'de' : 'en';
+    document.querySelectorAll('[data-i18n]').forEach(el => { const k = el.getAttribute('data-i18n'); if (t[currentLang][k]) el.textContent = t[currentLang][k]; });
+    document.getElementById('langToggle').textContent = currentLang === 'en' ? 'DE' : 'EN';
+    const m = document.getElementById('langToggleMobile'); if (m) m.textContent = currentLang === 'en' ? 'DE' : 'EN';
+  }
+</script>
+</body>
+</html>
