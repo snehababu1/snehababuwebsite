@@ -18,11 +18,11 @@
       --coral-dark: #c73d56;
       --coral-light: #f07088;
       --coral-pale: #fde8ec;
-      --white: #FAFAF7;
-      --off-white: #F2F2EE;
-      --light-gray: #f4f4f6;
-      --gray: #8a8a9a;
-      --dark-gray: #444455;
+      --white: #1a1a2e;
+      --off-white: #16213e;
+      --light-gray: #16213e;
+      --gray: #a8a8b8;
+      --dark-gray: #F0EBE3;
       --dark: #1a1a2e;
       --font: 'Poppins', sans-serif;
       --shadow: 0 4px 24px rgba(232, 80, 106, 0.12);
@@ -39,7 +39,7 @@
     body {
       font-family: var(--font);
       background: var(--white);
-      color: var(--dark);
+      color: #F0EBE3;
       overflow-x: hidden;
       line-height: 1.7;
       cursor: none;
@@ -146,8 +146,8 @@
     }
 
     #navbar.scrolled {
-      background: rgba(255, 255, 255, 0.97);
-      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+      background: rgba(26, 26, 46, 0.97);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.25);
       padding: 12px 0;
       backdrop-filter: blur(12px);
     }
@@ -185,7 +185,7 @@
 
     .nav-links a:hover {
       color: var(--coral);
-      background: var(--coral-pale);
+      background: rgba(232, 80, 106, 0.18);
     }
 
     .lang-toggle {
@@ -219,7 +219,7 @@
       display: block;
       width: 26px;
       height: 2.5px;
-      background: var(--dark);
+      background: #F0EBE3;
       border-radius: 2px;
       transition: var(--transition);
     }
@@ -614,17 +614,18 @@
     }
 
     .hobby-tag {
-      background: var(--coral-pale);
-      color: var(--coral-dark);
+      background: transparent;
+      color: #F0EBE3;
       font-size: 0.75rem;
       font-weight: 600;
       padding: 5px 13px;
       border-radius: 20px;
+      border: 1.5px solid #E8506A;
       transition: background var(--transition), transform var(--transition);
     }
 
     .hobby-tag:hover {
-      background: #f9d0d8;
+      background: rgba(232, 80, 106, 0.12);
       transform: translateY(-2px);
     }
 
@@ -691,12 +692,13 @@
     }
 
     .edu-tag {
-      background: var(--coral-pale);
-      color: var(--coral-dark);
+      background: transparent;
+      color: #F0EBE3;
       font-size: 0.78rem;
       font-weight: 600;
-      padding: 6px 14px;
+      padding: 5px 13px;
       border-radius: 20px;
+      border: 1.5px solid #E8506A;
     }
 
     /* ═══════════════════════════════════════
@@ -713,10 +715,11 @@
     }
 
     .skill-category {
-      background: white;
+      background: #16213e;
       border-radius: var(--radius);
       padding: 28px;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+      border: 0.5px solid #0f3460;
       transition: transform var(--transition), box-shadow var(--transition);
     }
 
@@ -740,7 +743,7 @@
     /* ── Currently Learning variant ── */
     .skill-category--learning {
       border: 2px solid var(--coral);
-      background: var(--white);
+      background: #16213e;
       box-shadow: 0 2px 20px rgba(232, 80, 106, 0.14);
     }
 
@@ -775,10 +778,10 @@
       100% { transform: scale(2.4); opacity: 0; }
     }
 
-    /* Learning tags — coral border, white fill */
+    /* Learning tags — coral border, dark fill */
     .skill-tag--learning {
-      background: var(--white);
-      color: var(--coral-dark);
+      background: #16213e;
+      color: #F0EBE3;
       border: 1.5px solid var(--coral);
       font-weight: 600;
       position: relative;
@@ -916,9 +919,9 @@
       width: 14px;
       height: 14px;
       border-radius: 50%;
-      background: white;
+      background: #16213e;
       border: 3px solid var(--coral);
-      box-shadow: 0 0 0 2px var(--coral-pale);
+      box-shadow: 0 0 0 2px rgba(232, 80, 106, 0.25);
       transition: transform var(--transition), background var(--transition);
       z-index: 1;
     }
@@ -947,7 +950,7 @@
     .exp-role-text {
       font-size: 1.05rem;
       font-weight: 700;
-      color: var(--dark);
+      color: #F0EBE3;
       margin-bottom: 3px;
       line-height: 1.3;
     }
@@ -1047,7 +1050,7 @@
     }
     .activity-role {
       font-weight: 600;
-      color: var(--dark);
+      color: #F0EBE3;
       font-size: 0.95rem;
       margin-bottom: 5px;
     }
@@ -1058,7 +1061,7 @@
       margin-bottom: 4px;
     }
     .activity-date {
-      color: #999;
+      color: #a8a8b8;
       font-size: 0.78rem;
     }
     .activity-toggle {
@@ -1088,11 +1091,11 @@
     }
     .activity-desc p {
       font-size: 0.85rem;
-      color: #555;
+      color: #a8a8b8;
       line-height: 1.6;
       margin: 0;
       padding-top: 8px;
-      border-top: 1px solid var(--coral-pale);
+      border-top: 1px solid #0f3460;
     }
 
     /* ═══════════════════════════════════════
@@ -1145,9 +1148,9 @@
     }
 
     .flip-front {
-      background: white;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-      border: 1px solid rgba(232, 80, 106, 0.1);
+      background: #16213e;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+      border: 0.5px solid #0f3460;
     }
 
     .flip-back {
@@ -1164,7 +1167,7 @@
     .flip-project-title {
       font-size: 1.2rem;
       font-weight: 800;
-      color: var(--dark);
+      color: #F0EBE3;
       margin-bottom: 10px;
     }
 
@@ -1210,8 +1213,8 @@
     }
 
     .cert-badge {
-      background: var(--white);
-      border: 1px solid rgba(232, 80, 106, 0.15);
+      background: #16213e;
+      border: 0.5px solid #0f3460;
       border-radius: var(--radius);
       padding: 24px;
       display: flex;
@@ -1256,7 +1259,7 @@
     .cert-info h4 {
       font-size: 0.9rem;
       font-weight: 700;
-      color: var(--dark);
+      color: #F0EBE3;
       margin-bottom: 4px;
       line-height: 1.35;
     }
@@ -1345,11 +1348,11 @@
     }
 
     .blog-card {
-      background: white;
+      background: #16213e;
       border-radius: var(--radius);
       padding: 28px;
-      box-shadow: 0 2px 14px rgba(0,0,0,0.05);
-      border: 1px solid transparent;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.25);
+      border: 0.5px solid #0f3460;
       transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
       cursor: pointer;
     }
@@ -1388,7 +1391,7 @@
     .blog-title {
       font-size: 1rem;
       font-weight: 700;
-      color: var(--dark);
+      color: #F0EBE3;
       margin-bottom: 12px;
       line-height: 1.45;
     }
@@ -1466,8 +1469,8 @@
     }
 
     .contact-link-item:hover {
-      background: var(--coral-pale);
-      color: var(--coral-dark);
+      background: rgba(232, 80, 106, 0.18);
+      color: var(--coral);
       transform: translateX(5px);
     }
 
@@ -1494,12 +1497,12 @@
     .form-group textarea {
       width: 100%;
       padding: 12px 16px;
-      border: 1.5px solid #e2e2e8;
+      border: 1.5px solid #0f3460;
       border-radius: var(--radius-sm);
       font-family: var(--font);
       font-size: 0.9rem;
-      color: var(--dark);
-      background: var(--off-white);
+      color: #F0EBE3;
+      background: #16213e;
       transition: border-color var(--transition), box-shadow var(--transition);
       resize: none;
     }
@@ -1553,7 +1556,7 @@
        FOOTER
     ═══════════════════════════════════════ */
     footer {
-      background: var(--dark);
+      background: #0d0d1a;
       color: rgba(255,255,255,0.5);
       text-align: center;
       padding: 28px 24px;
@@ -1589,7 +1592,7 @@
     }
 
     .modal-box {
-      background: white;
+      background: #16213e;
       border-radius: var(--radius);
       padding: 40px;
       max-width: 480px;
@@ -1626,7 +1629,7 @@
       font-size: 1.4rem;
       font-weight: 800;
       margin-bottom: 8px;
-      color: var(--dark);
+      color: #F0EBE3;
     }
 
     .modal-box p {
@@ -1649,7 +1652,7 @@
     .form-success h4 {
       font-size: 1.1rem;
       font-weight: 700;
-      color: var(--dark);
+      color: #F0EBE3;
       margin-bottom: 6px;
     }
 
@@ -1668,7 +1671,7 @@
       right: -100%;
       width: 260px;
       height: 100vh;
-      background: white;
+      background: #16213e;
       z-index: 1500;
       padding: 80px 32px 40px;
       flex-direction: column;
@@ -1692,7 +1695,7 @@
 
     .mobile-nav a:hover {
       color: var(--coral);
-      background: var(--coral-pale);
+      background: rgba(232, 80, 106, 0.18);
     }
 
     .mobile-nav-overlay {
@@ -1711,7 +1714,7 @@
        VOLUNTEER STRIP
     ═══════════════════════════════════════ */
     .volunteer-strip {
-      background: var(--coral-pale);
+      background: #16213e;
       border-radius: var(--radius);
       padding: 24px 28px;
       margin-top: 32px;
@@ -1734,7 +1737,7 @@
 
     .volunteer-strip ul li {
       font-size: 0.82rem;
-      color: var(--dark-gray);
+      color: #F0EBE3;
       padding: 2px 0 2px 12px;
       position: relative;
     }
@@ -2805,7 +2808,9 @@
       </div>
 
       <div class="fade-in-right">
-        <form id="contactForm" onsubmit="handleContactSubmit(event)">
+        <form id="contactForm" action="https://formspree.io/f/mredyvda" method="POST">
+          <input type="hidden" name="_next" value="https://snehababu.eu" />
+          <input type="hidden" name="_subject" value="New message from snehababu.eu" />
           <div class="form-group">
             <label for="c_name" data-i18n="form_name">Name</label>
             <input type="text" id="c_name" name="name" required placeholder="Your name" data-i18n-placeholder="ph_name" />
@@ -2823,6 +2828,7 @@
             <textarea id="c_message" name="message" required placeholder="Your message..." data-i18n-placeholder="ph_message"></textarea>
           </div>
           <button type="submit" class="btn-coral" data-i18n="form_send">Send Message</button>
+          <div id="contact-success" style="display:none; color:#E8506A; margin-top:1rem; text-align:center;">Thank you! Your message has been sent. I will get back to you soon.</div>
         </form>
         <div class="form-success" id="contactSuccess">
           <div class="success-icon">🎉</div>
@@ -2854,24 +2860,27 @@
     <button class="modal-close" onclick="closeModal('cvModal')">✕</button>
     <h3 data-i18n="modal_title">Request CV</h3>
     <p data-i18n="modal_desc">I'll send my CV to your email within 24 hours.</p>
-    <form id="cvForm" onsubmit="handleCvSubmit(event)">
+    <form id="cvForm" action="https://formspree.io/f/xeedrbjy" method="POST">
+      <input type="hidden" name="_subject" value="CV Request from snehababu.eu" />
+      <input type="hidden" name="_next" value="https://snehababu.eu" />
       <div class="form-group">
         <label for="cv_name" data-i18n="form_name">Name</label>
-        <input type="text" id="cv_name" required placeholder="Your name" data-i18n-placeholder="ph_name" />
+        <input type="text" id="cv_name" name="name" required placeholder="Your name" data-i18n-placeholder="ph_name" />
       </div>
       <div class="form-group">
         <label for="cv_email" data-i18n="form_email">Email</label>
-        <input type="email" id="cv_email" required placeholder="your@email.com" />
+        <input type="email" id="cv_email" name="email" required placeholder="your@email.com" />
       </div>
       <div class="form-group">
         <label for="cv_company" data-i18n="form_company">Company (optional)</label>
-        <input type="text" id="cv_company" placeholder="Your company" data-i18n-placeholder="ph_company" />
+        <input type="text" id="cv_company" name="company" placeholder="Your company" data-i18n-placeholder="ph_company" />
       </div>
       <div class="form-group">
         <label for="cv_reason" data-i18n="form_reason">Reason for interest</label>
-        <textarea id="cv_reason" style="height:80px" placeholder="Tell me a bit about the role or context..." data-i18n-placeholder="ph_reason"></textarea>
+        <textarea id="cv_reason" name="reason" style="height:80px" placeholder="Tell me a bit about the role or context..." data-i18n-placeholder="ph_reason"></textarea>
       </div>
       <button type="submit" class="btn-coral" data-i18n="modal_send">Send Request</button>
+      <div id="cv-success" style="display:none; color:#E8506A; margin-top:1rem; text-align:center;">Thank you! Your CV request has been received. Sneha will be in touch shortly.</div>
     </form>
     <div class="form-success" id="cvSuccess">
       <div class="success-icon">✅</div>

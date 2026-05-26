@@ -14,11 +14,11 @@
       --coral-dark: #c73d56;
       --coral-light: #f07088;
       --coral-pale: #fde8ec;
-      --white: #FAFAF7;
-      --off-white: #F2F2EE;
-      --light-gray: #f4f4f6;
-      --gray: #8a8a9a;
-      --dark-gray: #444455;
+      --white: #1a1a2e;
+      --off-white: #16213e;
+      --light-gray: #16213e;
+      --gray: #a8a8b8;
+      --dark-gray: #F0EBE3;
       --dark: #1a1a2e;
       --font: 'Poppins', sans-serif;
       --shadow: 0 4px 24px rgba(232, 80, 106, 0.12);
@@ -32,7 +32,7 @@
     body {
       font-family: var(--font);
       background: var(--white);
-      color: var(--dark);
+      color: #F0EBE3;
       overflow-x: hidden;
       line-height: 1.7;
     }
@@ -60,8 +60,8 @@
     }
 
     #navbar.scrolled {
-      background: rgba(255,255,255,0.97);
-      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+      background: rgba(26,26,46,0.97);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.25);
       padding: 12px 0;
       backdrop-filter: blur(12px);
     }
@@ -100,7 +100,7 @@
     .nav-links a:hover,
     .nav-links a.active {
       color: var(--coral);
-      background: var(--coral-pale);
+      background: rgba(232, 80, 106, 0.18);
     }
 
     .lang-toggle {
@@ -134,7 +134,7 @@
       display: block;
       width: 26px;
       height: 2.5px;
-      background: var(--dark);
+      background: #F0EBE3;
       border-radius: 2px;
       transition: var(--transition);
     }
@@ -159,7 +159,7 @@
       top: 0; right: -280px;
       width: 270px;
       height: 100%;
-      background: var(--white);
+      background: #16213e;
       z-index: 1200;
       padding: 72px 28px 40px;
       display: flex;
@@ -182,7 +182,7 @@
 
     .mobile-nav a:hover,
     .mobile-nav a.active {
-      background: var(--coral-pale);
+      background: rgba(232, 80, 106, 0.18);
       color: var(--coral);
     }
 
@@ -250,11 +250,11 @@
     }
 
     .blog-card {
-      background: white;
+      background: #16213e;
       border-radius: var(--radius);
       padding: 28px;
-      box-shadow: 0 2px 14px rgba(0,0,0,0.05);
-      border: 1px solid transparent;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.25);
+      border: 0.5px solid #0f3460;
       transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
       display: flex;
       flex-direction: column;
@@ -293,7 +293,7 @@
     .blog-title {
       font-size: 1rem;
       font-weight: 700;
-      color: var(--dark);
+      color: #F0EBE3;
       margin-bottom: 12px;
       line-height: 1.45;
     }
@@ -321,7 +321,7 @@
 
     /* ── FOOTER ── */
     footer {
-      background: var(--dark);
+      background: #0d0d1a;
       color: rgba(255,255,255,0.5);
       text-align: center;
       padding: 28px 24px;
